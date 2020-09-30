@@ -21,7 +21,7 @@
 
                 background-color: #fff;
 
-                background: url(Image/back.jpg);
+                background: url(/Image/back.jpg);
 
                 background-repeat: no-repeat;
 

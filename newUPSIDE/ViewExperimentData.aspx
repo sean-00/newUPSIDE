@@ -32,52 +32,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <form id="form1" runat="server">
-        <asp:Table ID="Label2" runat="server" Text="Experiment Name" Width="100%" Height="40px" BackColor="#66CCFF" Font-Bold="True" ForeColor="Black"></asp:Table>
-        <table width="30%">
-            <tbody height="150px">
+        <asp:DropDownList ID="ExperimentNameSelected" runat="server" OnSelectedIndexChanged="ExperimentNameSelected_SelectedIndexChanged" ></asp:DropDownList>
 
-                <tr>
-                    <td><a href="UPSIDE-Experiment://UnityExperiment.exe">Experiment11</a>
-                    </td>
-                </tr>
-                <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
-                <tr>
-                    <td><a href="UPSIDE-Experiment://UnityExperiment.exe">Experiment12</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="UPSIDE-Experiment://UnityExperiment.exe">Experiment13</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="UPSIDE-Experiment://UnityExperiment.exe">Experiment14</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="链接">Experiment15</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="链接">Experiment16</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="链接">Experiment17</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="链接">Experiment18</a>
-                    </td>
-                </tr>
-            </tbody>
 
-        </table>
 
-        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-
+        <asp:Button OnClick="GetJson_Click" Text="Get"  runat="server" />
         <asp:Label ID="Label1" runat="server" Text="Experiment Data" BackColor="#66CCFF" Font-Bold="True" ForeColor="Black" Height="40px" Width="100%"></asp:Label>
         <asp:Label ID="LabelTest" runat="server" Text=""></asp:Label>
-        <table class="table table-bordered table-striped" id="ExperimentDataTable">
+        <asp:Table class="table table-bordered table-striped" id="ExperimentDataTable" runat="server">
+            
+        </asp:Table>
+        <table class="table table-bordered table-striped" >
             <tr>
                 <th>Round</th>
                 <th>Success</th>
