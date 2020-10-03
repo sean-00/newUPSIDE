@@ -72,6 +72,7 @@
   <ItemGroup>
     <Content Include="Image\back.jpg" />
     <Content Include="Image\unisa-logo.jpg" />
+    <Content Include="RoundBar.html" />
     <Content Include="Web.config" />
     <Content Include="Home.aspx" />
     <Content Include="ViewExperimentData.aspx" />
@@ -108,6 +109,7 @@
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\newUPSIDE20201003083314 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\newUPSIDEWeb - Web Deploy.pubxml" />
+    <Content Include="testbar.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
