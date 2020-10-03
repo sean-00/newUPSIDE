@@ -101,8 +101,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="File\ExperimentData.json" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\newUPSIDE20201003083314 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\newUPSIDEWeb - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

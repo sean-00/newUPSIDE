@@ -40,7 +40,9 @@
         <asp:Label ID="Label1" runat="server" Text="Experiment Data" BackColor="#66CCFF" Font-Bold="True" ForeColor="Black" Height="40px" Width="100%"></asp:Label>
         <asp:Label ID="LabelTest" runat="server" Text=""></asp:Label>
         <asp:Table class="table table-bordered table-striped" id="ExperimentDataTable" runat="server">
-            
+            <asp:TableRow ID="tablerow">
+
+            </asp:TableRow>
         </asp:Table>
         <table class="table table-bordered table-striped" >
             <tr>
@@ -48,7 +50,7 @@
                 <th>Success</th>
                 <th>OverTime</th>
                 <th>TimeUse</th>
-            </tr>
+          </tr>
         </table>
         <div id="box">
         </div>
