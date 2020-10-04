@@ -49,31 +49,7 @@
       "TimeUse": 12
     },
     {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 5,
+      "Round": 10,
       "Success": true,
       "OverTime": false,
       "TimeUse": 12
