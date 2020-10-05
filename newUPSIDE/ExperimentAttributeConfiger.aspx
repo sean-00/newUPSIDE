@@ -10,7 +10,6 @@
         <asp:Label ID="Label1" runat="server" Text="Input Experiment Description:" Height="20px" Width="100%"></asp:Label>
         <asp:TextBox runat="server" ID="description"></asp:TextBox>
         <asp:Label ID="Label2" runat="server" Text="Input new Experiment URL:" Height="20px" Width="100%"></asp:Label>
-
         <asp:TextBox runat="server"></asp:TextBox>
     </form>
 
