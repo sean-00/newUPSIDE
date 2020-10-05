@@ -26,10 +26,19 @@ namespace newUPSIDE
         int lengthCol;
         ArrayList RowHead = new ArrayList();
         JObject jo = new JObject();
+        ExperimentAttributeConfiger EAC = new ExperimentAttributeConfiger();
         protected void Page_Load(object sender, EventArgs e)
         {
-           // Initialize(Server.MapPath("~/File/ExperimentData.json"));
-           // InitializeList();
+            //Initialize(Server.MapPath("~/File/ExperimentData.json"));
+            // InitializeList();
+            string path = Server.MapPath("~/File/ExperimentData.json");
+
+            if (!Page.IsPostBack)
+            {
+                Initialize(path);
+            }
+
+
         }
 
 
@@ -37,9 +46,9 @@ namespace newUPSIDE
         private void Initialize(string path)
         {
             
-            string fileUrl = path;
+            //string fileUrl = path;
             //ToDataTable(fileUrl);
-            string josnString = File.ReadAllText(fileUrl, Encoding.Default);
+            string josnString = File.ReadAllText(path, Encoding.Default);
             
             jo = JObject.Parse(josnString);
             
@@ -118,35 +127,27 @@ namespace newUPSIDE
             string Ename = ExperimentNameSelected.SelectedItem.Value;
 
             string filepath ;
-            if (Ename =="ITTEM2")
+            if (Ename =="ITEM2")
 
             {
-                filepath = Server.MapPath("~/File/ExperimentData.json");
-             //   ArrayList arrayList = new ArrayList();
-               // RowHead = arrayList;
-              //  JObject jObject = new JObject();
-               // jo = jObject;
-               // ExperimentDataTable = new Table();
-               //tableHeaderName = new TableHeaderRow();
+                filepath = "~/File/" + "Experiment1.json";
+              
+             //   ExperimentDataTable = new Table();
+              // tableHeaderName = new TableHeaderRow();
 
             }
 
             else
 
             {
-                filepath = Server.MapPath("~/File/Experiment1.json");
+                filepath = "~/File/" + "ExperimentData.json";
                 
-             //   ArrayList arrayList = new ArrayList();
-              //  RowHead = arrayList;
-              //  JObject jObject = new JObject();
-              //  jo = jObject;
-              // ExperimentDataTable = new Table();
-              // tableHeaderName = new TableHeaderRow();
-            }
-            
-        
-            ;
-            Initialize(filepath);
+               
+              //  ExperimentDataTable = new Table();
+              //  tableHeaderName = new TableHeaderRow();
+            } ;
+            string fileUrl = Server.MapPath(filepath);
+            Initialize(fileUrl);
         }
 
         protected void GetJson_Click(object sender, EventArgs e)

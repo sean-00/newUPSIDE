@@ -32,10 +32,10 @@
                     <a class="nav-link" href="ViewExperimentData.aspx">ViewExperimentData</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="RoundBar.html">VisualizedData</a>
+                    <a class="nav-link" href="RoundBar.aspx">VisualizedData</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ExperimentAttributeConfiger">ExperimentAttribute</a>
+                    <a class="nav-link" href="ExperimentAttributeConfiger.aspx">ExperimentAttribute</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="unityhub:/">OpenUnity</a>

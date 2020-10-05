@@ -2,58 +2,25 @@
   "Experiments": [
     {
       "Round": 1,
-      "Success": false,
-      "OverTime": false,
-      "TimeUse": 46
+      "Success": false
+
     },
     {
-      "Round": 2,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 296
+      "Round": 1,
+      "Success": false
+
     },
     {
-      "Round": 3,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 93
+      "Round": 1,
+      "Success": false
+
     },
     {
-      "Round": 4,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 56
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 10,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
+      "Round": 1,
+      "Success": false
+
     }
+    
 
   ]
 }
