@@ -59,25 +59,6 @@
       "Success": true,
       "OverTime": false,
       "TimeUse": 202
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 12
-    }
-
+    }    
   ]
 }

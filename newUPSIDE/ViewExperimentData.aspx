@@ -46,12 +46,12 @@
 
         .line {
             fill: none;
-            stroke: green;
-            stroke-width: 5px;
+            stroke: blueviolet;
+            stroke-width: 3px;
         }
 
         .bar {
-            fill: blue;
+            fill: lightblue;
         }
 
         .highlight {
@@ -108,7 +108,7 @@
         </div>
 
         <div id="A">                              
-            <!--p>Section A</!--p-->
+            <H2>Bar Chart</H2>
             <svg width ="500" height ="500" id ="svg4"></svg>
             <script>
 
@@ -123,7 +123,7 @@
                     .attr("y", 50)
                     .attr("font-size", "20px")
                     .attr("class", "title")
-                    .text("Round_Time bar chart");
+                    //.text("Round_Time bar chart");
 
                 var x1 = d3.scaleBand().range([0, width]).padding(0.4),                         //
                     y1 = d3.scaleLinear().range([height, 0]);         //range([300,0])          //
@@ -132,6 +132,7 @@
                     .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
                 //read json file for data
+                //d3.json("..\File\testbar.json", function (error, data2) {             //how to use the file in File directory ?
                 d3.json("testbar.json", function (error, data2) {
 
                     if (error) {
@@ -152,8 +153,8 @@
                         .attr("transform", "translate(0," + height + ")")
                         .call(d3.axisBottom(x1))                                                //
                         .append("text")
-                        .attr("y", height - 250)
-                        .attr("x", width - 100)
+                        .attr("y", height - 300)                        //height -250 below the axis(y)
+                        .attr("x", width + 50)                         //width -100 @ mid
                         .attr("text-anchor", "end")
                         .attr("font-size", "18px")
                         .attr("stroke", "blue")
@@ -231,11 +232,11 @@
         </div>
 
         <div id="Second">
-            <p>Graph 2</p>
+            <H2> Line Chart </H2>
             <svg width="480" height="250" id="svg3"></svg>
                 <script>
                     // set the dimensions and margins of the graph
-                    var margin3 = { top3: 20, right3: 20, bottom3: 30, left3: 50 },
+                    var margin3 = { top3: 20, right3: 50, bottom3: 30, left3: 50 },
                         width3 = 480 - margin3.left3 - margin3.right3,
                         height3 = 250 - margin3.top3 - margin3.bottom3;
 
@@ -285,8 +286,8 @@
                             .attr("transform", "translate(" + 0 + "," + height3 + ")")      //500-20-30=450
                             .call(d3.axisBottom(x))
                             .append("text")
-                            //.attr("y", height -20)       //  height -250  ????
-                            .attr("x", width3 - 200)        // width - 100
+                            //.attr("y", height3)       //  height -250  ????
+                            .attr("x", width3 + 50)        // width - 100 @ mid
                             .attr("text-anchor", "end")
                             .attr("font-size", "18px")
                             .attr("stroke", "blue")

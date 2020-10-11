@@ -192,7 +192,7 @@
             <svg width="480" height="250" id="svg3"></svg>
                 <script>
                             // set the dimensions and margins of the graph
-                            var margin3 = { top: 20, right: 20, bottom: 30, left: 50 },
+                            var margin3 = { top: 20, right: 50, bottom: 30, left: 50 },
                                 width3 = 480 - margin3.left - margin3.right,
                                 height3 = 250 - margin3.top - margin3.bottom;
 
@@ -216,8 +216,8 @@
                                 if (error) throw error;
                                 // format the data
                                 data.forEach(function (d) {
-                                    d.Round = d.round;
-                                    d.TimeUse = +d.timeuse;
+                                    d.round = d.round;
+                                    d.timeuse = +d.timeuse;
                                 });
 
                                 // Scale the range of the data
@@ -238,7 +238,7 @@
                                     .call(d3.axisBottom(x))
                                     .append("text")
                                     //.attr("y", height -20)       //  height -250  ????
-                                    .attr("x", width3 - 200)        // width - 100
+                                    .attr("x", width3 + 50)        // width - 100
                                     .attr("text-anchor", "end")
                                     .attr("font-size", "18px")
                                     .attr("stroke", "blue")
