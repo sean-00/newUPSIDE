@@ -229,14 +229,16 @@
 
             </script>
         </div>
+
         <div id="Second">
             <p>Graph 2</p>
             <svg width="480" height="250" id="svg3"></svg>
                 <script>
                     // set the dimensions and margins of the graph
-                    var margin3 = { top: 20, right: 20, bottom: 30, left: 50 },
-                        width3 = 480 - margin3.left - margin3.right,
-                        height3 = 250 - margin3.top - margin3.bottom;
+                    var margin3 = { top3: 20, right3: 20, bottom3: 30, left3: 50 },
+                        width3 = 480 - margin3.left3 - margin3.right3,
+                        height3 = 250 - margin3.top3 - margin3.bottom3;
+
 
                     // set the ranges
                     var x = d3.scaleLinear().range([0, width3]);    //OK
@@ -247,19 +249,23 @@
                         .x(function (d) { return x(d.round); })
                         .y(function (d) { return y(d.timeuse); });
 
-                    var svg3 = d3.select("body").append("svg")
-                        .attr("width", width3 + margin3.left + margin3.right)
-                        .attr("height", height3 + margin3.top + margin3.bottom)
+
+                    //var svg3 = d3.select("body").append("svg")
+                    var svg3 = d3.select("#svg3").append("svg")
+                        .attr("width", width3 + margin3.left3 + margin3.right3)
+                        .attr("height", height3 + margin3.top3 + margin3.bottom3)
                         .append("g").attr("transform",
-                            "translate(" + margin3.left + "," + margin3.top + ")");
+                            "translate(" + margin3.left3 + "," + margin3.top3 + ")");
+
 
                     // Get the data
                     d3.json("testbar.json", function (error, data) {
                         if (error) throw error;
                         // format the data
                         data.forEach(function (d) {
-                            d.Round = d.round;
-                            d.TimeUse = +d.timeuse;
+                            d.round = d.round;
+                            d.timeuse = +d.timeuse;
+                            console.log(d.round, d.timeuse);
                         });
 
                         // Scale the range of the data
@@ -285,7 +291,6 @@
                             .attr("font-size", "18px")
                             .attr("stroke", "blue")
                             .text("Round");
-
 
                         // Add the Y Axis
                         svg3.append("g")
