@@ -25,27 +25,40 @@ namespace newUPSIDE
         int lengthRow;
         int lengthCol;
         ArrayList RowHead = new ArrayList();
+        ArrayList ExperimentsName = new ArrayList();
         JObject jo = new JObject();
         ExperimentAttributeConfiger EAC = new ExperimentAttributeConfiger();
         protected void Page_Load(object sender, EventArgs e)
         {
             //Initialize(Server.MapPath("~/File/ExperimentData.json"));
             // InitializeList();
-            string path = Server.MapPath("~/File/ExperimentData.json");
-
+           string path = Server.MapPath("~/File/ConfigerExperiment.json");
+           // string txt = (string)Session["MySessionKey "];
+           // ExperimentNameSelected.Items.Add(txt);
             if (!Page.IsPostBack)
             {
                 Initialize(path);
-            }
+                string JsonPath = Server.MapPath("~/File/ConfigerExperiment.json");
+              //  string JsonPath = "C:\\Users\\lx\\source\\repos\\newUPSIDE\\newUPSIDE\\File\\ConfigerExperiment.json";
+                string JsonString = File.ReadAllText(JsonPath, Encoding.UTF8);
+                JObject jobject = JObject.Parse(JsonString);
+                for (int i = 0; i < jobject["Experiments"].Count(); i++)
+                {
+                    ExperimentNameSelected.Items.Add(jobject["Experiments"][i]["Name"].ToString());
+                        //Insert(i, jobject["Experiments"][i]["Name"].ToString());
+                        //   ExperimentNameSelected.Items[i].Value = i.ToString();
+                }
 
+            }
+            
 
         }
 
-
-
-        private void Initialize(string path)
+       
+            private void Initialize(string path)
         {
-            
+
+           
             //string fileUrl = path;
             //ToDataTable(fileUrl);
             string josnString = File.ReadAllText(path, Encoding.Default);
@@ -124,51 +137,81 @@ namespace newUPSIDE
 
         protected void ExperimentNameSelected_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+
+            //JToken ltest = jo["Experiments"][local]["Data"].First.First.First;
+            //JEnumerable<JToken> ll = ltest.Children();
+
+            //foreach (JToken grandGrandChild in ltest)
+            //{
+            //    var property = grandGrandChild as JProperty;
+            //    if (property != null)
+            //    {
+            //        string mmm = property.Name;
+            //        RowHead.Add(mmm);
+            //        // MessageBox.Show(property.Name + ":" + property.Value);
+            //    }
+            //}
+            //for (int i = 0; i < jo["Experiments"][local]["Data"].Count(); i++)
+            //{
+            //    TableCell cell = new TableCell();
+            //    string cellValue = jo["Experiments"][local]["Data"][i][1].ToString();
+            //    cell.Text = cellValue;
+            //    tableHeaderName.Cells.AddAt(i, cell);
+
+            //}
             string Ename = ExperimentNameSelected.SelectedItem.Value;
-
-            string filepath ;
-            if (Ename =="ITEM2")
-
+            string path = Server.MapPath("~/File/ConfigerExperiment.json");
+            string josnString = File.ReadAllText(path, Encoding.Default);
+            jo = JObject.Parse(josnString);
+            int local = 0;
+            for (int i = 0; i < jo["Experiments"].Count(); i++)
             {
-                filepath = "~/File/" + "Experiment1.json";
-              
-             //   ExperimentDataTable = new Table();
-              // tableHeaderName = new TableHeaderRow();
-
+                if (jo["Experiments"][i]["Name"].ToString() == Ename)
+                {
+                    local = i;
+                    break;
+                }
             }
+            Label4.Text = jo["Experiments"][local]["Description"].ToString();
 
-            else
+            string filepath;
+            
+            //if (Ename == "ITEM2")
 
-            {
-                filepath = "~/File/" + "ExperimentData.json";
-                
-               
-              //  ExperimentDataTable = new Table();
-              //  tableHeaderName = new TableHeaderRow();
-            } ;
+            //{
+                filepath = "~/File/" + Ename+".json";
+
+                //   ExperimentDataTable = new Table();
+                // tableHeaderName = new TableHeaderRow();
+
+            //}
+
+            //else
+
+            //{
+            //    filepath = "~/File/" + "ExperimentData.json";
+
+
+            //    //  ExperimentDataTable = new Table();
+            //    //  tableHeaderName = new TableHeaderRow();
+            //};
             string fileUrl = Server.MapPath(filepath);
             Initialize(fileUrl);
         }
 
-        protected void GetJson_Click(object sender, EventArgs e)
-        {
-           
 
 
-
-
-        }
-
-        private void InitializeList()
-        {
-            //List<string> list = new List<string>();
-            //list.Add("ITEM1");
-            //list.Add("ITEM2");
-            //ListItem ll = new ListItem();
-            //ExperimentNameSelected.Items.Add("ITEM1");
-            //ExperimentNameSelected.Items.Add("ITEM2");
-           // ExperimentNameSelected.Items.Add("ITEM3");
-        }
+        //    private void InitializeList()
+        //{
+        //    //List<string> list = new List<string>();
+        //    //list.Add("ITEM1");
+        //    //list.Add("ITEM2");
+        //    //ListItem ll = new ListItem();
+        //    //ExperimentNameSelected.Items.Add("ITEM1");
+        //    //ExperimentNameSelected.Items.Add("ITEM2");
+        //   // ExperimentNameSelected.Items.Add("ITEM3");
+            //}
     }
     
    

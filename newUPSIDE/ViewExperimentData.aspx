@@ -39,9 +39,7 @@
             <asp:ListItem Text="ITEM3"></asp:ListItem>
         </asp:DropDownList>
         
-
-
-        <asp:Button OnClick="GetJson_Click" Text="Open Experiment"  runat="server" />
+        <a  href="UPSIDE-Experiment://UnityExperiment.exe">Open Experiment</a>        
         <asp:Label ID="Label3" runat="server" Text="Experiment Description" BackColor="#66CCFF" Font-Bold="True" ForeColor="Black" Height="40px" Width="100%"></asp:Label>
        <asp:Label ID="Label4" runat="server" Text="The Unity Portal / Interface for Data and Experiments will be a web application that provide a platform for researchers to do their experiments on the web page by unity program.  Researcher can select what data they want from the experiment before the experiment start, the unity program will form the data and web server will visualize the data for user to read the result. The researcher can also look up the history experiments data for their summary and comparison. Online experiment platform will give the researchers a chance to promote their experiments for more people and data visualizing will let researchers have different perspectives to analyse the results of their experiments."  Width="100%"></asp:Label>
         <asp:Label ID="Label1" runat="server" Text="Experiment Data" BackColor="#66CCFF" Font-Bold="True" ForeColor="Black" Height="40px" Width="100%"></asp:Label>
