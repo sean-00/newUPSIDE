@@ -18,7 +18,7 @@
         
         <asp:Button  runat="server" OnClick="Submit_Click" Text="Submit to Json File" Width="100%" BorderColor="#00CCFF" BorderWidth="2px"/>
         <asp:FileUpload ID="MyFileUpload" runat="server" BorderWidth="1px" Width="79%" /> 
-        <asp:Button ID="FileUploadButton" runat="server" Text="Uplode Json Experiment Data " onclick="FileUploadButton_Click" BorderWidth="2px"  Width="20.6%" BorderColor="#00CCFF"/>
+        <asp:Button ID="FileUploadButton" runat="server" Text="Upload Json Experiment Data " onclick="FileUploadButton_Click" BorderWidth="2px"  Width="20.6%" BorderColor="#00CCFF"/>
          
         
     </form>

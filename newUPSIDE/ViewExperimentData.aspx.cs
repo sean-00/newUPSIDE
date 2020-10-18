@@ -37,7 +37,7 @@ namespace newUPSIDE
            // ExperimentNameSelected.Items.Add(txt);
             if (!Page.IsPostBack)
             {
-                Initialize(path);
+               // Initialize(path);
                 string JsonPath = Server.MapPath("~/File/ConfigerExperiment.json");
               //  string JsonPath = "C:\\Users\\lx\\source\\repos\\newUPSIDE\\newUPSIDE\\File\\ConfigerExperiment.json";
                 string JsonString = File.ReadAllText(JsonPath, Encoding.UTF8);

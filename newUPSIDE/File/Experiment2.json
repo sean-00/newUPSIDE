@@ -1,0 +1,80 @@
+{
+  "Experiments": [
+    {
+      "Round": 1,
+      "Success": false,
+      "OverTime": false
+    },
+    {
+      "Round": 2,
+      "Success": true,
+      "OverTime": false
+    },
+    {
+      "Round": 3,
+      "Success": true,
+      "OverTime": false
+    },
+    {
+      "Round": 4,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 56
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 12
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 12
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 12
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 12
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 12
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 12
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 12
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 12
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 12
+    }
+
+  ]
+}
