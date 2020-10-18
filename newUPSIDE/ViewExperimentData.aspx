@@ -185,7 +185,7 @@
                         .delay(function (d, i) { return i * 25; })
                         .attr("height", function (d) { return height - y1(d.timeuse); });       //
                 });
-                console.log("x.bandwidth()=", x.bandwidth());
+                //console.log("x.bandwidth()=", x.bandwidth());
 
                 function onMouseOver(d, i) {
                     d3.select(this)
