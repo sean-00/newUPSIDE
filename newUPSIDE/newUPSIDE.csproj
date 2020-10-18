@@ -120,7 +120,7 @@
   <ItemGroup>
     <Content Include="File\ExperimentData.json" />
     <Content Include="File\Experiment1.json" />
-    <Content Include="File\ConfigerExperiment.json" />
+    <Content Include="File\testbar.json" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
