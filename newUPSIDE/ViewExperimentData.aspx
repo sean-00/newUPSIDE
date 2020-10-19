@@ -133,8 +133,8 @@
                     .attr("transform", "translate(" + 100 + "," + 100 + ")");
                 
                 //read json file for data
-                //d3.json("..\File\testbar.json", function (error, data2) {             //how to use the file in File directory ?
-                d3.json("testbar.json", function (error, data2) {
+                d3.json("File/testbar.json", function (error, data2) {            //Use "/" to combine directory name and file name
+                //d3.json("testbar.json", function (error, data2) {               //read testbar.json in root directory
 
                     if (error) {
                         throw error;
@@ -189,7 +189,7 @@
                         .delay(function (d, i) { return i * 25; })
                         .attr("height", function (d) { return height - y1(d.timeuse); });       //
                 });
-                console.log("x.bandwidth()=", x.bandwidth());
+                //console.log("x.bandwidth()=", x.bandwidth());
 
                 function onMouseOver(d, i) {
                     d3.select(this)
@@ -261,7 +261,7 @@
 
 
                     // Get the data
-                    d3.json("testbar.json", function (error, data) {
+                    d3.json("File/testbar.json", function (error, data) {
                         if (error) throw error;
                         // format the data
                         data.forEach(function (d) {
