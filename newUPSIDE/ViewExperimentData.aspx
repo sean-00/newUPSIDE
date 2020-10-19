@@ -108,7 +108,11 @@
             <H2>Bar Chart</H2>
             <svg width ="500" height ="500" id ="svg4"></svg>
             <script>
-
+                function Init() {
+                    var v = "中国";
+                    var s = '<%=CsharpVoid("'+v+'") %>';
+                    alert(s);
+                }
                 var svg4 = d3.select("#svg4");
                 var margin = 200;
                 var width = svg4.attr("width") - margin;
@@ -127,7 +131,7 @@
 
                 var g = svg4.append("g")
                     .attr("transform", "translate(" + 100 + "," + 100 + ")");
-
+                
                 //read json file for data
                 //d3.json("..\File\testbar.json", function (error, data2) {             //how to use the file in File directory ?
                 d3.json("testbar.json", function (error, data2) {

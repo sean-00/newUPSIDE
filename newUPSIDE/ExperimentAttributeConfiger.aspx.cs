@@ -18,63 +18,63 @@ namespace newUPSIDE
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (ViewState["Insus.NET"] != null)
-            {
-                DymanicallyCreateTextBox();
-            }
+            //if (ViewState["Insus.NET"] != null)
+            //{
+            //    DymanicallyCreateTextBox();
+            //}
            
             
 
         }
 
-        private void DymanicallyCreateTextBox()
-        {
-            ViewState["Insus.NET"] = true;
-            if (ConfigerHeaderNumber.Text != "")
-            {
-                ConfigerHeaderButton.Enabled = false;
-                int count = int.Parse(ConfigerHeaderNumber.Text);
-                for (int i = 0; i < count; i++)
-                {
+        //private void DymanicallyCreateTextBox()
+        //{
+        //    ViewState["Insus.NET"] = true;
+        //    if (ConfigerHeaderNumber.Text != "")
+        //    {
+        //        ConfigerHeaderButton.Enabled = false;
+        //        int count = int.Parse(ConfigerHeaderNumber.Text);
+        //        for (int i = 0; i < count; i++)
+        //        {
 
-                    TextBox textbox = new TextBox();
-                    textbox.Width = 120;
-                    textbox.BorderWidth = 1;
+        //            TextBox textbox = new TextBox();
+        //            textbox.Width = 120;
+        //            textbox.BorderWidth = 1;
                    
                     
-                    textbox.ID = "T" + i.ToString();
-                    PlaceHolderLoadTextBox.Controls.Add(textbox);
-                    //TableCell cell = new TableCell();
-                    // text.Width = 100;                    
-                    //ConfigerHeaderName.Cells.AddAt(i, cell);                   
-                    // cell.Controls.Add(text);
-                }
+        //            textbox.ID = "T" + i.ToString();
+        //            PlaceHolderLoadTextBox.Controls.Add(textbox);
+        //            //TableCell cell = new TableCell();
+        //            // text.Width = 100;                    
+        //            //ConfigerHeaderName.Cells.AddAt(i, cell);                   
+        //            // cell.Controls.Add(text);
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
 
-        protected void ConfigerHeaderButton_Click(object sender, EventArgs e)
-        {
-            DymanicallyCreateTextBox();
-        }
+        //protected void ConfigerHeaderButton_Click(object sender, EventArgs e)
+        //{
+        //    DymanicallyCreateTextBox();
+        //}
 
         protected void Submit_Click(object sender, EventArgs e)
         {
             ArrayList ExperimentData = new ArrayList(); 
-            if (ConfigerHeaderNumber.Text != ""&&ConfigerName.Text!=""&&ConfigerDescription.Text!="") {
-                if (ViewState["Insus.NET"] != null)
-                {
-                    foreach (Control txtobj in this.PlaceHolderLoadTextBox.Controls)
-                    {
-                        if (txtobj is TextBox)
-                        {
-                            string mmk = (txtobj as TextBox).Text;
-                            ExperimentData.Add(mmk);
+            if ( ConfigerName.Text!=""&&ConfigerDescription.Text!="") {
+                //if (ViewState["Insus.NET"] != null)
+                //{
+                //    foreach (Control txtobj in this.PlaceHolderLoadTextBox.Controls)
+                //    {
+                //        if (txtobj is TextBox)
+                //        {
+                //            string mmk = (txtobj as TextBox).Text;
+                //            ExperimentData.Add(mmk);
 
-                        }
-                    }
-                }
+                //        }
+                //    }
+                //}
 
 
                 //string JsonPath = "C:\\Users\\lx\\source\\repos\\newUPSIDE\\newUPSIDE\\File\\ConfigerExperiment.json";

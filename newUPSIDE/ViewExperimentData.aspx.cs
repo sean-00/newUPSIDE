@@ -163,6 +163,7 @@ namespace newUPSIDE
             string Ename = ExperimentNameSelected.SelectedItem.Value;
             string path = Server.MapPath("~/File/ConfigerExperiment.json");
             string josnString = File.ReadAllText(path, Encoding.Default);
+            
             jo = JObject.Parse(josnString);
             int local = 0;
             for (int i = 0; i < jo["Experiments"].Count(); i++)
@@ -176,14 +177,14 @@ namespace newUPSIDE
             Label4.Text = jo["Experiments"][local]["Description"].ToString();
 
             string filepath;
-            
+            filepath = "~/File/" + Ename + ".json";
             //if (Ename == "ITEM2")
 
             //{
-                filepath = "~/File/" + Ename+".json";
 
-                //   ExperimentDataTable = new Table();
-                // tableHeaderName = new TableHeaderRow();
+
+            //   ExperimentDataTable = new Table();
+            // tableHeaderName = new TableHeaderRow();
 
             //}
 
@@ -198,9 +199,30 @@ namespace newUPSIDE
             //};
             string fileUrl = Server.MapPath(filepath);
             Initialize(fileUrl);
+            string josnSelectedPath = File.ReadAllText(fileUrl, Encoding.Default);
+            JObject jsonSelected = new JObject();
+            jsonSelected = JObject.Parse(josnSelectedPath);
+
+            ArrayList inputArray = new ArrayList();
+            inputArray.Add(jsonSelected["Experiments"]);
+            // byte[] x = (byte[])inputArray.ToArray(typeof(byte));
+            string fileTestBar = Server.MapPath("~/testbar.json");
+            File.WriteAllText(fileTestBar, JsonConvert.SerializeObject(jsonSelected["Experiments"]));
+          //  FileStream fsSource = new FileStream(fileUrl, FileMode.Open);
+            
+           // FileStream fsTarget = new FileStream(fileTestBar, FileMode.OpenOrCreate);
+           // byte[] sourceArr = new byte[fsSource.Length];
+          //  fsSource.Read(sourceArr, 0, sourceArr.Length);
+          //  fsTarget.Write(x, 0, x.Length);
+           // fsSource.Close();
+           // fsTarget.Close();
         }
 
-
+        protected string CsharpVoid(string strCC)
+        {
+            strCC = "你好！" + strCC;
+            return strCC;
+        }
 
         //    private void InitializeList()
         //{
@@ -211,7 +233,7 @@ namespace newUPSIDE
         //    //ExperimentNameSelected.Items.Add("ITEM1");
         //    //ExperimentNameSelected.Items.Add("ITEM2");
         //   // ExperimentNameSelected.Items.Add("ITEM3");
-            //}
+        //}
     }
     
    
