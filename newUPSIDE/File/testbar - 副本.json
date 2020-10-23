@@ -1,0 +1,98 @@
+[
+  {
+    "round": 1,
+    "Success": false,
+    "OverTime": false,
+    "timeuse": 46
+  },
+  {
+    "round": 2,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 296
+  },
+  {
+    "round": 3,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 93
+  },
+  {
+    "round": 4,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 356
+  },
+  {
+    "round": 5,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 12
+  },
+  {
+    "round": 6,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 123
+  },
+  {
+    "round": 7,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 234
+  },
+  {
+    "round": 8,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 89
+  },
+  {
+    "round": 9,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 102
+  },
+  {
+    "round": 10,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 202
+  },
+  {
+    "round": 11,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 62
+  },
+  {
+    "round": 12,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 122
+  },
+  {
+    "round": 13,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 92
+  },
+  {
+    "round": 14,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 112
+  },
+  {
+    "round": 15,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 102
+  },
+  {
+    "round": 16,
+    "Success": true,
+    "OverTime": false,
+    "timeuse": 92
+  }
+]

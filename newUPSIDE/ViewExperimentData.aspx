@@ -28,7 +28,8 @@
                 background: #ccc;
             }
     </style>
-         <style>
+
+    <style>
         .arc text {
             font: 16px arial;
             text-anchor: middle;
@@ -105,7 +106,7 @@
         </div>
 
         <div id="A">                              
-            <H2>Bar Chart</H2>
+            <H2>&nbsp;Bar chart of time used in each round</H2>
             <svg width ="500" height ="500" id ="svg4"></svg>
             <script>
                 function Init() {
@@ -131,10 +132,12 @@
 
                 var g = svg4.append("g")
                     .attr("transform", "translate(" + 100 + "," + 100 + ")");
-                
+
+                var filepath = "File/";
+                var filename = filepath + "testbar.json";
                 //read json file for data
-                d3.json("File/testbar.json", function (error, data2) {            //Use "/" to combine directory name and file name
-                //d3.json("testbar.json", function (error, data2) {               //read testbar.json in root directory
+                d3.json(filename, function (error, data2) {                         //Use "/" to combine directory name and file name
+                //d3.json("testbar.json", function (error, data2) {                 //read testbar.json in root directory
 
                     if (error) {
                         throw error;
@@ -154,8 +157,8 @@
                         .attr("transform", "translate(0," + height + ")")
                         .call(d3.axisBottom(x1))                                                //
                         .append("text")
-                        .attr("y", height - 300)                        //height -250 below the axis(y)
-                        .attr("x", width + 50)                         //width -100 @ mid
+                        .attr("y", height - 300)                                    //height -250 below the axis(y)
+                        .attr("x", width + 50)                                      //width -100 @ mid
                         .attr("text-anchor", "end")
                         .attr("font-size", "18px")
                         .attr("stroke", "blue")
@@ -233,7 +236,8 @@
         </div>
 
         <div id="Second">
-            <H2> Line Chart </H2>
+            <H2>&nbsp;Line chart of time used in each round</H2>
+            <br><br><br>
             <svg width="480" height="250" id="svg3"></svg>
                 <script>
                     // set the dimensions and margins of the graph
@@ -261,7 +265,8 @@
 
 
                     // Get the data
-                    d3.json("File/testbar.json", function (error, data) {
+                    //d3.json("File/testbar.json", function (error, data) {
+                    d3.json(filename, function (error, data) {
                         if (error) throw error;
                         // format the data
                         data.forEach(function (d) {
@@ -274,8 +279,6 @@
                         x.domain(d3.extent(data, function (d) { return d.round; }));
                         y.domain([0, d3.max(data, function (d) { return d.timeuse; })]);
 
-
-
                         // Add the valueline path.
                         svg3.append("path")
                             .data([data])
@@ -287,8 +290,8 @@
                             .attr("transform", "translate(" + 0 + "," + height3 + ")")      //500-20-30=450
                             .call(d3.axisBottom(x))
                             .append("text")
-                            //.attr("y", height3)       //  height -250  ????
-                            .attr("x", width3 + 50)        // width - 100 @ mid
+                            //.attr("y", height3)                                           // height -250  
+                            .attr("x", width3 + 50)                                         // width - 100 @ mid
                             .attr("text-anchor", "end")
                             .attr("font-size", "18px")
                             .attr("stroke", "blue")
@@ -299,7 +302,7 @@
                             .call(d3.axisLeft(y))
                             .append("text")
                             .attr("transform", "rotate(-90)")
-                            //  .attr("transform", "translate(" + width + "," + height + ")")      //500-20-30=450
+                            //  .attr("transform", "translate(" + width + "," + height + ")")      
                             .attr("y", 20)
                             // .attr("dy", "-5.1em")
                             .attr("text-anchor", "end")
@@ -309,7 +312,213 @@
 
                     });
                 </script>
+            </div>
+
+            <div id="B">   
+            <br><br><br>
+            <H2>&nbsp;Percentage of Success</H2>
+            <svg width="600" height="600" id="svg2"></svg>
+            <script>
+                //
+                var width2 = 600;
+                var height2 = 600;
+                var itemCount2 = 0;
+                var trueCount2 = 0;
+                var falseCount2 = 0;
+
+                d3.json(filename, function (error, data123) {
+                    console.log("data123.length=" + data123.length);
+                    if (error) {
+                        throw error;
+                    }
+                    //console.log(data123.filter((res) => { return res.Success == false }).length)
+                    //console.log(data123.filter((res) => { return res.Success == true }).length)
+                    falseCount2 = parseInt(data123.filter((res) => { return res.Success == false }).length);
+                    trueCount2 = parseInt(data123.filter((res) => { return res.Success == true }).length);
+                    console.log("falseCount2=" + falseCount2 + ",   trueCount2=" + trueCount2);
+
+                    var dataset = [['Success', trueCount2], ['Failure', falseCount2]];
+                    var pie = d3.pie()
+                        .sort(null)
+                        .value(function (d) {
+                            return d[1];
+                        });
+                    var piedata = pie(dataset);
+
+                    var outerRadius2 = width2 / 4;
+                    var innerRadius2 = 0;
+
+                    var arc = d3.arc()
+                        .outerRadius(outerRadius2)
+                        .innerRadius(innerRadius2);
+
+                    var colors = d3.schemeCategory10;
+
+                    //var svg = d3.select('body')
+                    var svg2 = d3.select("#svg2")
+                        .append('svg')
+                        .attr('width', width2)
+                        .attr('height', height2);
+
+                    var arcs = svg2.selectAll('g')
+                        .data(piedata)
+                        .enter()
+                        .append('g')
+                        .attr('transform', 'translate(' + width2 / 2 + ',' + height2 / 2 + ')');
+
+                    arcs.append('path')
+                        .attr('fill', function (d, i) {
+                            return colors[i];
+                        })
+                        .attr('d', function (d) {
+                            return arc(d);
+                        });
+
+                    arcs.append('text')
+                        .attr('transform', function (d, i) {
+                            var x2 = arc.centroid(d)[0] * 2.8;
+                            var y2 = arc.centroid(d)[1] * 2.8;
+                            if (i === 4) {
+                                return 'translate(' + (x2 * 1.2) + ', ' + (y2 * 1.2) + ')';
+                            } else if (i === 3) {
+                                return 'translate(' + (x2 - 40) + ', ' + y2 + ')';
+                            } else if (i === 5) {
+                                return 'translate(' + (x2 + 40) + ', ' + y2 + ')';
+                            }
+                            return 'translate(' + x2 + ', ' + y2 + ')';
+                        })
+                        .attr('text-anchor', 'middle')
+                        .text(function (d) {
+                            var percent = Number(d.value) / d3.sum(dataset, function (d) {
+                                return d[1];
+                            }) * 100;
+                            return d.data[0] + ' ' + percent.toFixed(1) + '%';
+                        })
+
+                    arcs.append('line')
+                        .attr('stroke', 'black')
+                        .attr('x1', function (d) { return arc.centroid(d)[0] * 2; })
+                        .attr('y1', function (d) { return arc.centroid(d)[1] * 2; })
+                        .attr('x2', function (d, i) {
+                            if (i === 4) {
+                                return arc.centroid(d)[0] * 3.2;
+                            }
+                            return arc.centroid(d)[0] * 2.5;
+                        })
+                        .attr('y2', function (d, i) {
+                            if (i === 4) {
+                                return arc.centroid(d)[1] * 3.2;
+                            }
+                            return arc.centroid(d)[1] * 2.5;
+                        });
+                });
+//
+            </script>
         </div>
+
+        <div id="E">  
+            <br>
+            <H2>&nbsp;Percentage of Overtime</H2>
+            <svg width="600" height="600" id="svg5"></svg>
+            <script>
+                //
+                var width5 = 600;
+                var height5 = 600;
+                var itemCount5 = 0;
+                var trueCount5 = 0;
+                var falseCount5 = 0;
+
+                d3.json(filename, function (error, data1234) {
+                    console.log("data1234.length=" + data1234.length);
+                    if (error) {
+                        throw error;
+                    }
+                    //console.log(data123.filter((res) => { return res.Success == false }).length)
+                    //console.log(data123.filter((res) => { return res.Success == true }).length)
+                    falseCount5 = parseInt(data1234.filter((res) => { return res.OverTime == false }).length);
+                    trueCount5 = parseInt(data1234.filter((res) => { return res.OverTime == true }).length);
+                    console.log("falseCount5=" + falseCount5 + ",   trueCount5=" + trueCount5);
+
+                    var dataset = [['Timeout', trueCount5], ['No timeout', falseCount5]];
+                    var pie = d3.pie()
+                        .sort(null)
+                        .value(function (d) {
+                            return d[1];
+                        });
+                    var piedata = pie(dataset);
+
+                    var outerRadius5 = width5 / 4;
+                    var innerRadius5 = 0;
+
+                    var arc = d3.arc()
+                        .outerRadius(outerRadius5)
+                        .innerRadius(innerRadius5);
+
+                    var colors = d3.schemeCategory10;
+
+                    //var svg = d3.select('body')
+                    var svg5 = d3.select("#svg5")
+                        .append('svg')
+                        .attr('width', width5)
+                        .attr('height', height5);
+
+                    var arcs = svg5.selectAll('g')
+                        .data(piedata)
+                        .enter()
+                        .append('g')
+                        .attr('transform', 'translate(' + width5 / 2 + ',' + height5 / 2 + ')');
+
+                    arcs.append('path')
+                        .attr('fill', function (d, i) {
+                            return colors[i + 7];
+                        })
+                        .attr('d', function (d) {
+                            return arc(d);
+                        });
+
+                    arcs.append('text')
+                        .attr('transform', function (d, i) {
+                            var x5 = arc.centroid(d)[0] * 2.8;
+                            var y5 = arc.centroid(d)[1] * 2.8;
+                            if (i === 4) {
+                                return 'translate(' + (x5 * 1.2) + ', ' + (y5 * 1.2) + ')';
+                            } else if (i === 3) {
+                                return 'translate(' + (x5 - 40) + ', ' + y5 + ')';
+                            } else if (i === 5) {
+                                return 'translate(' + (x5 + 40) + ', ' + y5 + ')';
+                            }
+                            return 'translate(' + x5 + ', ' + y5 + ')';
+                        })
+                        .attr('text-anchor', 'middle')
+                        .text(function (d) {
+                            var percent = Number(d.value) / d3.sum(dataset, function (d) {
+                                return d[1];
+                            }) * 100;
+                            return d.data[0] + ' ' + percent.toFixed(1) + '%';
+                        })
+
+                    arcs.append('line')
+                        .attr('stroke', 'black')
+                        .attr('x1', function (d) { return arc.centroid(d)[0] * 2; })
+                        .attr('y1', function (d) { return arc.centroid(d)[1] * 2; })
+                        .attr('x2', function (d, i) {
+                            if (i === 4) {
+                                return arc.centroid(d)[0] * 3.2;
+                            }
+                            return arc.centroid(d)[0] * 2.5;
+                        })
+                        .attr('y2', function (d, i) {
+                            if (i === 4) {
+                                return arc.centroid(d)[1] * 3.2;
+                            }
+                            return arc.centroid(d)[1] * 2.5;
+                        });
+                });
+//
+            </script>
+        </div>
+
+
 
 
     </form>
