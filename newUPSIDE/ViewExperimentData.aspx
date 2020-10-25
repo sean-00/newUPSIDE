@@ -1,6 +1,16 @@
 ﻿   <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ViewExperimentData.aspx.cs" Inherits="newUPSIDE.WebForm2" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head"  runat="server">
+
+<asp:Response.Buffer = True>
+<asp:Response.ExpiresAbsolute = Now() - 1>
+<asp:Response.Expires = 0>
+<asp:Response.CacheControl = "no-cache">
+<asp:Response.AddHeader "Pragma", "No-Cache">
+
+
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <!--script type="text/javascript" src="d3.v4.min.js"></!--script-->
     <style>
         table tbody {
             display: block;
@@ -133,24 +143,30 @@
                 var g = svg4.append("g")
                     .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
-                var filepath = "File/";
-                var filename = filepath + "testbar.json";
+                //var filepath = "File/";
+                //var filename = filepath + "testbar.json";
+                var filename = "testbar.json";
                 //read json file for data
                 d3.json(filename, function (error, data2) {                         //Use "/" to combine directory name and file name
                 //d3.json("testbar.json", function (error, data2) {                 //read testbar.json in root directory
 
                     if (error) {
-                        throw error;
+                        console.error(error);
+                    } else {
+                        console.log(data2);
                     }
+                    //if (error) {
+                    //    throw error;
+                    //}
 
                     data2.forEach(function (d) {
-                        d.round = d.round;
-                        d.timeuse = +d.timeuse;
-                        console.log(d.round, d.timeuse);     
+                        d.Round = d.Round;
+                        d.TimeUse = +d.TimeUse;
+                        console.log("A:", d.Round, d.TimeUse);     
                     });
 
-                    x1.domain(data2.map(function (d) { return d.round; }));                     //
-                    y1.domain([0, d3.max(data2, function (d) { return d.timeuse; })]);          //
+                    x1.domain(data2.map(function (d) { return d.Round; }));                     //
+                    y1.domain([0, d3.max(data2, function (d) { return d.TimeUse; })]);          //
 
 
                     g.append("g")
@@ -185,12 +201,12 @@
                         .attr("class", "bar")
                         .on("mouseover", onMouseOver)
                         .on("mouseout", onMouseOut)
-                        .attr("x", function (d) { return x1(d.round); })                //
-                        .attr("y", function (d) { return y1(d.timeuse); })              //
+                        .attr("x", function (d) { return x1(d.Round); })                //
+                        .attr("y", function (d) { return y1(d.TimeUse); })              //
                         .attr("width", x1.bandwidth()).transition()                     //
                         .ease(d3.easeLinear).duration(200)
                         .delay(function (d, i) { return i * 25; })
-                        .attr("height", function (d) { return height - y1(d.timeuse); });       //
+                        .attr("height", function (d) { return height - y1(d.TimeUse); });       //
                 });
                 //console.log("x.bandwidth()=", x.bandwidth());
 
@@ -202,13 +218,13 @@
                         .transition()
                         .duration(200)
                         .attr('width', x1.bandwidth() + 5)                              //
-                        .attr("y", function (d) { return y1(d.timeuse) - 10; })         //
-                        .attr("height", function (d) { return height - y1(d.timeuse) + 10; });      //
+                        .attr("y", function (d) { return y1(d.TimeUse) - 10; })         //
+                        .attr("height", function (d) { return height - y1(d.TimeUse) + 10; });      //
 
                     g.append("text")
                         .attr('class', 'val')
                         .attr('x', function () {
-                            return x1(d.round);                                         //
+                            return x1(d.Round);                                         //
                         })
 
                         .attr('y', function () {
@@ -225,8 +241,8 @@
                         .transition()
                         .duration(200)
                         .attr('width', x1.bandwidth())                                  //
-                        .attr("y", function (d) { return y1(d.timeuse); })              //
-                        .attr("height", function (d) { return height - y1(d.timeuse); });           //
+                        .attr("y", function (d) { return y1(d.TimeUse); })              //
+                        .attr("height", function (d) { return height - y1(d.TimeUse); });           //
 
                     d3.selectAll('.val')
                         .remove()
@@ -252,8 +268,8 @@
 
                     // define the line
                     var valueline = d3.line()
-                        .x(function (d) { return x(d.round); })
-                        .y(function (d) { return y(d.timeuse); });
+                        .x(function (d) { return x(d.Round); })
+                        .y(function (d) { return y(d.TimeUse); });
 
 
                     //var svg3 = d3.select("body").append("svg")
@@ -270,14 +286,14 @@
                         if (error) throw error;
                         // format the data
                         data.forEach(function (d) {
-                            d.round = d.round;
-                            d.timeuse = +d.timeuse;
-                            console.log(d.round, d.timeuse);
+                            d.Round = d.Round;
+                            d.TimeUse = +d.TimeUse;
+                            console.log("B:", d.Round, d.TimeUse);
                         });
 
                         // Scale the range of the data
-                        x.domain(d3.extent(data, function (d) { return d.round; }));
-                        y.domain([0, d3.max(data, function (d) { return d.timeuse; })]);
+                        x.domain(d3.extent(data, function (d) { return d.Round; }));
+                        y.domain([0, d3.max(data, function (d) { return d.TimeUse; })]);
 
                         // Add the valueline path.
                         svg3.append("path")

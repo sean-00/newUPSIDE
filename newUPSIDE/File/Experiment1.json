@@ -1,12 +1,16 @@
 {
-  
   "Experiments": [
     {
-      "Round": "",
-      "Success": "",
-      "Time":""
+      "Round": 1,
+      "Success": false,
+      "OverTime": false,
+      "TimeUse": 46
+    },
+    {
+      "Round": 2,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 296
     }
-
-    
   ]
 }

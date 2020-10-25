@@ -42,22 +42,6 @@
           "Round": ""
         }
       ]
-    },
-    {
-      "Name": "Experiment4",
-      "Description": "this",
-      "Data": [
-        {
-          "round": ""
-        }
-      ]
-    },
-    {
-      "Name": "e3",
-      "Description": "a",
-      "Data": [
-        {}
-      ]
     }
   ]
 }
