@@ -2,15 +2,17 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head"  runat="server">
 
-<asp:Response.Buffer = True>
-<asp:Response.ExpiresAbsolute = Now() - 1>
-<asp:Response.Expires = 0>
-<asp:Response.CacheControl = "no-cache">
-<asp:Response.AddHeader "Pragma", "No-Cache">
+<!--
+< Response.Buffer = True %>
+< Response.ExpiresAbsolute = Now() - 1  %>
+< Response.Expires = 0 %>
+< Response.CacheControl = "no-cache"  %>
+< Response.AddHeader "Pragma", "No-Cache"  %>
+-->
 
 
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-    <!--script type="text/javascript" src="d3.v4.min.js"></!--script-->
+    <!--script type="text/javascript" src="d3.v4.min.js"></script-->
     <style>
         table tbody {
             display: block;
@@ -188,7 +190,7 @@
                         .attr("text-anchor", "end")
                         .attr("font-size", "18px")
                         .attr("stroke", "blue")
-                        .text("TimeUse");
+                        .text("Time");
 
                     g.append("g")
                         .attr("transform", "translate(0, 0)")
@@ -256,15 +258,16 @@
             <br><br><br>
             <svg width="480" height="250" id="svg3"></svg>
                 <script>
-                    // set the dimensions and margins of the graph
-                    var margin3 = { top3: 20, right3: 50, bottom3: 30, left3: 50 },
+                    // set the dimensions and margins of the graph, top 20,right 50, bottom 30, left 50
+                    // change to left = 80 ,
+                    var margin3 = { top3: 50, right3: 50, bottom3: 0, left3: 80 },
                         width3 = 480 - margin3.left3 - margin3.right3,
                         height3 = 250 - margin3.top3 - margin3.bottom3;
 
 
                     // set the ranges
-                    var x = d3.scaleLinear().range([0, width3]);    //OK
-                    var y = d3.scaleLinear().range([height3, 0]);
+                    var x = d3.scaleLinear().range([0, width3]);    // 0~480-80-50=250
+                    var y = d3.scaleLinear().range([height3, 0]);   //250-50-0=200 ~ 0
 
                     // define the line
                     var valueline = d3.line()
@@ -277,7 +280,9 @@
                         .attr("width", width3 + margin3.left3 + margin3.right3)
                         .attr("height", height3 + margin3.top3 + margin3.bottom3)
                         .append("g").attr("transform",
-                            "translate(" + margin3.left3 + "," + margin3.top3 + ")");
+                            "translate(" + margin3.left3 + "," + 20 + ")");
+                        //.append("g").attr("transform",
+                        //    "translate(" + margin3.left3 + "," + margin3.top3 + ")");
 
 
                     // Get the data
@@ -304,7 +309,7 @@
                         svg3.append("g")
                             //.attr("transform", "translate(0," + height + ")")
                             .attr("transform", "translate(" + 0 + "," + height3 + ")")      //500-20-30=450
-                            .call(d3.axisBottom(x))
+                            .call(d3.axisBottom(x).ticks(5))                                //ticks(5) show 5 scale
                             .append("text")
                             //.attr("y", height3)                                           // height -250  
                             .attr("x", width3 + 50)                                         // width - 100 @ mid
@@ -315,16 +320,18 @@
 
                         // Add the Y Axis
                         svg3.append("g")
+                            .attr("transform", "translate(" + 0 + "," + 0 + ")")            //
                             .call(d3.axisLeft(y))
                             .append("text")
                             .attr("transform", "rotate(-90)")
-                            //  .attr("transform", "translate(" + width + "," + height + ")")      
-                            .attr("y", 20)
-                            // .attr("dy", "-5.1em")
+                            .attr("x",20)
+                            //  .attr("transform", "translate(" + width + "," + height + ")")
+                            .attr("y", -50)                                                 //OK !
+                            //.attr("dy", "-5.1em")
                             .attr("text-anchor", "end")
                             .attr("font-size", "18px")
                             .attr("stroke", "blue")
-                            .text("TimeUse");
+                            .text("Time");
 
                     });
                 </script>
@@ -404,6 +411,8 @@
                             return 'translate(' + x2 + ', ' + y2 + ')';
                         })
                         .attr('text-anchor', 'middle')
+                        .style("font-size", "16px")
+                        .attr("stroke", "blue")
                         .text(function (d) {
                             var percent = Number(d.value) / d3.sum(dataset, function (d) {
                                 return d[1];
@@ -506,6 +515,8 @@
                             return 'translate(' + x5 + ', ' + y5 + ')';
                         })
                         .attr('text-anchor', 'middle')
+                        .style("font-size", "16px")
+                        .attr("stroke", "blue")
                         .text(function (d) {
                             var percent = Number(d.value) / d3.sum(dataset, function (d) {
                                 return d[1];
