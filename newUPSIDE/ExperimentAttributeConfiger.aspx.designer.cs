@@ -69,6 +69,33 @@ namespace newUPSIDE
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
+        /// PlaceHolderLoadTextBox 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderLoadTextBox;
+
+        /// <summary>
+        /// ConfigerHeaderNumber 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ConfigerHeaderNumber;
+
+        /// <summary>
+        /// ConfigerHeaderButton 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ConfigerHeaderButton;
+
+        /// <summary>
         /// MyFileUpload 控件。
         /// </summary>
         /// <remarks>
