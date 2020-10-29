@@ -14,10 +14,14 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+
+
+
 namespace newUPSIDE
 {
    
-
+ 
    
     public partial class WebForm2 : System.Web.UI.Page
     {
@@ -58,7 +62,6 @@ namespace newUPSIDE
             private void Initialize(string path)
         {
 
-           
             //string fileUrl = path;
             //ToDataTable(fileUrl);
             string josnString = File.ReadAllText(path, Encoding.Default);

@@ -1,15 +1,21 @@
-﻿   <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ViewExperimentData.aspx.cs" Inherits="newUPSIDE.WebForm2" %>
+
+   <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ViewExperimentData.aspx.cs" Inherits="newUPSIDE.WebForm2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head"  runat="server">
 
-<!--
-< Response.Buffer = True %>
-< Response.ExpiresAbsolute = Now() - 1  %>
-< Response.Expires = 0 %>
-< Response.CacheControl = "no-cache"  %>
-< Response.AddHeader "Pragma", "No-Cache"  %>
--->
 
+    <!-- 
+    Response.Buffer = true;
+    //Response.ExpiresAbsolute = now() - 1;
+    Response.Expires = 0;
+    Response.CacheControl = "no-cache";
+    //Response.AddHeader "Pragma", "No-Cache";
+    -->
+    <!--
+    Response.Expires = 0;
+    Response.Cache.SetNoStore();
+    Response.AppendHeader("Pragma", "no-cache");
+    -->
 
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <!--script type="text/javascript" src="d3.v4.min.js"></script-->
@@ -116,13 +122,13 @@
         </table>
         <div id="box">
         </div>
-
+ 
         <div id="A">                              
             <H2>&nbsp;Bar chart of time used in each round</H2>
             <svg width ="500" height ="500" id ="svg4"></svg>
             <script>
                 function Init() {
-                    var v = "中国";
+                    var v = "�й�";
                     var s = '<%=CsharpVoid("'+v+'") %>';
                     alert(s);
                 }

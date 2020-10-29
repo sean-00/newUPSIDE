@@ -42,38 +42,6 @@
           "Round": ""
         }
       ]
-    },
-    {
-      "Name": "Experiment4",
-      "Description": "this",
-      "Data": [
-        {
-          "round": ""
-        }
-      ]
-    },
-    {
-      "Name": "Experiment5",
-      "Description": "this is the test ",
-      "Data": [
-        {
-          "4": "",
-          "5": "",
-          "6": "",
-          "a": ""
-        }
-      ]
-    },
-    {
-      "Name": "Experiment63",
-      "Description": "test",
-      "Data": [
-        {
-          "4": "",
-          "5": "",
-          "6": ""
-        }
-      ]
     }
   ]
 }
