@@ -1,5 +1,12 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="newUPSIDE.Site" %>
-
+<%    
+    Response.Buffer = true;
+    //Response.ExpiresAbsolute = #May 31,2001 13:30:15#;
+    Response.Expires = 0;
+    Response.CacheControl = "no-cache";
+    Response.Cache.SetNoStore();
+    Response.AppendHeader("Pragma", "no-cache");
+%>
 <!DOCTYPE html>
 
 <html>

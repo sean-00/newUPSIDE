@@ -1,16 +1,16 @@
-
    <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ViewExperimentData.aspx.cs" Inherits="newUPSIDE.WebForm2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head"  runat="server">
-
-
-    <!-- 
+    <%    
     Response.Buffer = true;
     //Response.ExpiresAbsolute = now() - 1;
     Response.Expires = 0;
     Response.CacheControl = "no-cache";
-    //Response.AddHeader "Pragma", "No-Cache";
-    -->
+    Response.Cache.SetNoStore();
+    Response.AppendHeader("Pragma", "no-cache");
+    %>
+
+
     <!--
     Response.Expires = 0;
     Response.Cache.SetNoStore();

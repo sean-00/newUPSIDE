@@ -52,14 +52,53 @@ namespace newUPSIDE
                         //Insert(i, jobject["Experiments"][i]["Name"].ToString());
                         //   ExperimentNameSelected.Items[i].Value = i.ToString();
                 }
-
+ 
             }
-            
+            Refresh();              // clear cache           
 
         }
 
-       
-            private void Initialize(string path)
+        // line 61-99 for clear cache
+        public static void Refresh()
+        {
+            Refresh(String.Empty);
+        }
+
+        /// <summary>
+            /// 移除指bai定前缀缓du存
+            /// </summary>
+            /// <param name="pre"></param>
+        public static void Refresh(string pre)
+        {
+            System.Web.Caching.Cache _cache = HttpRuntime.Cache;
+            IDictionaryEnumerator CacheEnum = _cache.GetEnumerator();
+
+            ArrayList al = new ArrayList();
+
+            while (CacheEnum.MoveNext())
+            {
+                al.Add(CacheEnum.Key);
+            }
+
+
+            foreach (string key in al)
+            {
+                if (pre == string.Empty)
+                {
+                    _cache.Remove(key);
+                }
+                else
+                {
+                    if (key.StartsWith(pre))
+                    {
+                        _cache.Remove(key);
+                    }
+                }
+            }
+
+        }
+
+        private void Initialize(string path)
         {
 
             //string fileUrl = path;
