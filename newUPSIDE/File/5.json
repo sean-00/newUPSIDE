@@ -1,0 +1,212 @@
+{
+  "Experiments": [
+    {
+      "Round": "",
+      "Success": "",
+      "OverTime": "",
+      "TimeUse": "",
+      "ImageType": "",
+      "ImageDetail": ""
+    },
+    {
+      "Round": 1,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 699,
+      "ImageType": "Global",
+      "ImageDetail": "H_from_T"
+    },
+    {
+      "Round": 2,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 1120,
+      "ImageType": "Global",
+      "ImageDetail": "H_from_Z"
+    },
+    {
+      "Round": 3,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 1005,
+      "ImageType": "Global",
+      "ImageDetail": "H_from_Z"
+    },
+    {
+      "Round": 4,
+      "Success": false,
+      "OverTime": false,
+      "TimeUse": 1449,
+      "ImageType": "Local",
+      "ImageDetail": "Z_from_O"
+    },
+    {
+      "Round": 5,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Global",
+      "ImageDetail": "H_from_S"
+    },
+    {
+      "Round": 1,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Neither",
+      "ImageDetail": "S_from_Z"
+    },
+    {
+      "Round": 2,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 501,
+      "ImageType": "Local",
+      "ImageDetail": "T_from_O"
+    },
+    {
+      "Round": 3,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 563,
+      "ImageType": "Local",
+      "ImageDetail": "Z_from_H"
+    },
+    {
+      "Round": 4,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 295,
+      "ImageType": "Local",
+      "ImageDetail": "S_from_H"
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 274,
+      "ImageType": "Local",
+      "ImageDetail": "S_from_O"
+    },
+    {
+      "Round": 1,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 1789,
+      "ImageType": "Global",
+      "ImageDetail": "O_from_Z"
+    },
+    {
+      "Round": 2,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Neither",
+      "ImageDetail": "S_from_T"
+    },
+    {
+      "Round": 3,
+      "Success": false,
+      "OverTime": false,
+      "TimeUse": 1016,
+      "ImageType": "Neither",
+      "ImageDetail": "S_from_T"
+    },
+    {
+      "Round": 4,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 419,
+      "ImageType": "Global",
+      "ImageDetail": "O_from_S"
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 97,
+      "ImageType": "Global",
+      "ImageDetail": "O_from_S"
+    },
+    {
+      "Round": 1,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 1789,
+      "ImageType": "Global",
+      "ImageDetail": "O_from_Z"
+    },
+    {
+      "Round": 2,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Neither",
+      "ImageDetail": "S_from_T"
+    },
+    {
+      "Round": 3,
+      "Success": false,
+      "OverTime": false,
+      "TimeUse": 1016,
+      "ImageType": "Neither",
+      "ImageDetail": "S_from_T"
+    },
+    {
+      "Round": 4,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 419,
+      "ImageType": "Global",
+      "ImageDetail": "O_from_S"
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 97,
+      "ImageType": "Global",
+      "ImageDetail": "O_from_S"
+    },
+    {
+      "Round": 1,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Global",
+      "ImageDetail": "O_from_T"
+    },
+    {
+      "Round": 2,
+      "Success": false,
+      "OverTime": false,
+      "TimeUse": 599,
+      "ImageType": "Neither",
+      "ImageDetail": "S_from_Z"
+    },
+    {
+      "Round": 3,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Neither",
+      "ImageDetail": "Z_from_S"
+    },
+    {
+      "Round": 4,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 1319,
+      "ImageType": "Neither",
+      "ImageDetail": "Z_from_T"
+    },
+    {
+      "Round": 5,
+      "Success": false,
+      "OverTime": false,
+      "TimeUse": 1054,
+      "ImageType": "Neither",
+      "ImageDetail": "Z_from_T"
+    }
+  ]
+}

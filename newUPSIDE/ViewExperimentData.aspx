@@ -105,16 +105,16 @@
         <div id="box">
         </div>
 
-        <div id="A">                              
+       <%-- <div id="A">                              
             <H2>&nbsp;Bar chart of time used in each round</H2>
             <svg width ="500" height ="500" id ="svg4"></svg>
             <script>
-                function Init() {
+                <%--function Init() {
                     var v = "中国";
                     var s = '<%=CsharpVoid("'+v+'") %>';
                     alert(s);
-                }
-                var svg4 = d3.select("#svg4");
+                }--%>
+             <%--   var svg4 = d3.select("#svg4");
                 var margin = 200;
                 var width = svg4.attr("width") - margin;
                 var height = svg4.attr("height") - margin;
@@ -233,9 +233,9 @@
                 }
 
             </script>
-        </div>
+        </div>--%>
 
-        <div id="Second">
+       <%-- <div id="Second">
             <H2>&nbsp;Line chart of time used in each round</H2>
             <br><br><br>
             <svg width="480" height="250" id="svg3"></svg>
@@ -312,9 +312,9 @@
 
                     });
                 </script>
-            </div>
+            </div>--%>
 
-            <div id="B">   
+          <%--  <div id="B">   
             <br><br><br>
             <H2>&nbsp;Percentage of Success</H2>
             <svg width="600" height="600" id="svg2"></svg>
@@ -414,9 +414,9 @@
                 });
 //
             </script>
-        </div>
+        </div>--%>
 
-        <div id="E">  
+       <%-- <div id="E">  
             <br>
             <H2>&nbsp;Percentage of Overtime</H2>
             <svg width="600" height="600" id="svg5"></svg>
@@ -516,7 +516,7 @@
                 });
 //
             </script>
-        </div>
+        </div>--%>
 
 
 

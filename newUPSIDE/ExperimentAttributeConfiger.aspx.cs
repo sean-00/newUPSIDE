@@ -30,27 +30,27 @@ namespace newUPSIDE
         private void DymanicallyCreateTextBox()
         {
             ViewState["Insus.NET"] = true;
-            if (ConfigerHeaderNumber.Text != "")
-            {
-                ConfigerHeaderButton.Enabled = false;
-                int count = int.Parse(ConfigerHeaderNumber.Text);
-                for (int i = 0; i < count; i++)
-                {
+            //if (ConfigerHeaderNumber.Text != "")
+            //{
+            //    ConfigerHeaderButton.Enabled = false;
+            //    int count = int.Parse(ConfigerHeaderNumber.Text);
+            //    for (int i = 0; i < count; i++)
+            //    {
 
-                    TextBox textbox = new TextBox();
-                    textbox.Width = 120;
-                    textbox.BorderWidth = 1;
+            //        TextBox textbox = new TextBox();
+            //        textbox.Width = 120;
+            //        textbox.BorderWidth = 1;
                    
                     
-                    textbox.ID = "T" + i.ToString();
-                    PlaceHolderLoadTextBox.Controls.Add(textbox);
-                    //TableCell cell = new TableCell();
-                    // text.Width = 100;                    
-                    //ConfigerHeaderName.Cells.AddAt(i, cell);                   
-                    // cell.Controls.Add(text);
-                }
+            //        textbox.ID = "T" + i.ToString();
+            //        PlaceHolderLoadTextBox.Controls.Add(textbox);
+            //        //TableCell cell = new TableCell();
+            //        // text.Width = 100;                    
+            //        //ConfigerHeaderName.Cells.AddAt(i, cell);                   
+            //        // cell.Controls.Add(text);
+            //    }
 
-            }
+            //}
         }
 
 
@@ -61,23 +61,55 @@ namespace newUPSIDE
 
         protected void Submit_Click(object sender, EventArgs e)
         {
+           // JObject source = new JObject();
+            //source.Add("{ \"Experiments\":[]}");
+            //create a new file path
+           
+
             ArrayList ExperimentData = new ArrayList(); 
-            if (ConfigerHeaderNumber.Text != ""&&ConfigerName.Text!=""&&ConfigerDescription.Text!="") {
+          // if (ConfigerHeaderNumber.Text != ""&&ConfigerName.Text!=""&&ConfigerDescription.Text!="") {
+            if (ConfigerName.Text != "" && ConfigerDescription.Text != ""){
+                    string newFilepath = "~/File/" + ConfigerName.Text.ToString() + ".json";
+                string p = Server.MapPath(newFilepath);
+
+                //found the file exist 
+                if (!File.Exists(p))
+                {
+                    FileStream fs1 = new FileStream(p, FileMode.Create, FileAccess.ReadWrite);
+                    fs1.Close();
+                }
+                JObject array = new JObject();
+                array.Add(new JProperty("Round", ""));
+                array.Add(new JProperty("Success", ""));
+                array.Add(new JProperty("OverTime", ""));
+                array.Add(new JProperty("TimeUse", ""));
+                array.Add(new JProperty("ImageType", ""));
+                array.Add(new JProperty("ImageDetail", ""));
+                
+                JObject newtest = new JObject(
+                    new JProperty("Experiments", new JArray(array)));
+
+                
+
+                
+
+                //write the json to file 
+                File.WriteAllText(p, Convert.ToString(newtest));
                 if (ViewState["Insus.NET"] != null)
                 {
-                    foreach (Control txtobj in this.PlaceHolderLoadTextBox.Controls)
-                    {
-                        if (txtobj is TextBox)
-                        {
-                            string mmk = (txtobj as TextBox).Text;
-                            ExperimentData.Add(mmk);
+                    //foreach (Control txtobj in this.PlaceHolderLoadTextBox.Controls)
+                    //{
+                    //    if (txtobj is TextBox)
+                    //    {
+                    //        string mmk = (txtobj as TextBox).Text;
+                    //        ExperimentData.Add(mmk);
 
-                        }
-                    }
+                    //    }
+                    //}
                 }
 
 
-                //string JsonPath = "C:\\Users\\lx\\source\\repos\\newUPSIDE\\newUPSIDE\\File\\ConfigerExperiment.json";
+               
                 string JsonPath = Server.MapPath("~/File/ConfigerExperiment.json");
                 string JsonString = File.ReadAllText(JsonPath, Encoding.UTF8);
                 JObject jobject = JObject.Parse(JsonString);
@@ -105,7 +137,7 @@ namespace newUPSIDE
                     //Response.Write("<script language='javascript'>alert('Please Input Name, Description and Header');</script>");
                     }
                     else {
-               //     Session["MySessionKey "] = name;
+          
                     string description = ConfigerDescription.Text.ToString();
                         JObject arr = new JObject();
                         foreach (string a in ExperimentData)
@@ -123,7 +155,8 @@ namespace newUPSIDE
 
                         string convertString = Convert.ToString(jobject);
                         File.WriteAllText(JsonPath, convertString);
-                    }
+                    Response.Write("<p >Success add the new experiment file</p>");
+                }
                 
                 
             }
@@ -136,21 +169,21 @@ namespace newUPSIDE
          
         }
 
-        protected void FileUploadButton_Click(object sender, EventArgs e)
-        {
-            if (MyFileUpload.HasFile)
-            {
+        //protected void FileUploadButton_Click(object sender, EventArgs e)
+        //{
+        //    if (MyFileUpload.HasFile)
+        //    {
 
-                string filePath = Server.MapPath("~/File/");
-                string fileName = MyFileUpload.PostedFile.FileName;
-                MyFileUpload.SaveAs(filePath + fileName);
-                Response.Write("<p >Uplode Success!</p>");
-            }
-            else
-            {
-                Response.Write("<p >Choose File!</p>");
-            }
-        }
+        //        string filePath = Server.MapPath("~/File/");
+        //        string fileName = MyFileUpload.PostedFile.FileName;
+        //        MyFileUpload.SaveAs(filePath + fileName);
+        //        Response.Write("<p >Uplode Success!</p>");
+        //    }
+        //    else
+        //    {
+        //        Response.Write("<p >Choose File!</p>");
+        //    }
+        //}
 
         
     }
