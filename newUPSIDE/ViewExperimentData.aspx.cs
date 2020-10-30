@@ -65,7 +65,7 @@ namespace newUPSIDE
         }
 
         /// <summary>
-            /// 移除指bai定前缀缓du存
+            /// 移除指定前缀缓存
             /// </summary>
             /// <param name="pre"></param>
         public static void Refresh(string pre)
@@ -250,14 +250,17 @@ namespace newUPSIDE
             // byte[] x = (byte[])inputArray.ToArray(typeof(byte));
             string fileTestBar = Server.MapPath("~/testbar.json");
             File.WriteAllText(fileTestBar, JsonConvert.SerializeObject(jsonSelected["Experiments"]));
-          //  FileStream fsSource = new FileStream(fileUrl, FileMode.Open);
+            //  FileStream fsSource = new FileStream(fileUrl, FileMode.Open);
+
+            // FileStream fsTarget = new FileStream(fileTestBar, FileMode.OpenOrCreate);
+            // byte[] sourceArr = new byte[fsSource.Length];
+            //  fsSource.Read(sourceArr, 0, sourceArr.Length);
+            //  fsTarget.Write(x, 0, x.Length);
+            // fsSource.Close();
+            // fsTarget.Close();
             
-           // FileStream fsTarget = new FileStream(fileTestBar, FileMode.OpenOrCreate);
-           // byte[] sourceArr = new byte[fsSource.Length];
-          //  fsSource.Read(sourceArr, 0, sourceArr.Length);
-          //  fsTarget.Write(x, 0, x.Length);
-           // fsSource.Close();
-           // fsTarget.Close();
+            Refresh();
+
         }
 
         protected string CsharpVoid(string strCC)
