@@ -179,9 +179,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="File\ExperimentData.json" />
     <Content Include="File\Experiment1.json" />
-    <Content Include="File\testbar.json" />
     <Content Include="File\ConfigerExperiment.json" />
     <Content Include="File\Experiment2.json" />
     <Content Include="File\Experiment3.json" />

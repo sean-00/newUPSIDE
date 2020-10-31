@@ -4,38 +4,32 @@
       "Round": 1,
       "Success": false,
       "OverTime": false,
-      "TimeUse": 46
+      "TimeUse": 176
     },
     
     {
       "Round": 2,
       "Success": true,
       "OverTime": false,
-      "TimeUse": 296
+      "TimeUse": 285
     },
     {
       "Round": 3,
       "Success": true,
       "OverTime": false,
-      "TimeUse": 93
+      "TimeUse": 193
     },
     {
       "Round": 4,
       "Success": true,
-      "OverTime": false,
-      "TimeUse": 356
+      "OverTime": true,
+      "TimeUse": 350
     },
     {
       "Round": 5,
       "Success": true,
       "OverTime": false,
-      "TimeUse": 12
-    },
-    {
-      "Round": 6,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 123
+      "TimeUse": 128
     }
   ]
 }

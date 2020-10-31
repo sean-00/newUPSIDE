@@ -1,6 +1,24 @@
-﻿   <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ViewExperimentData.aspx.cs" Inherits="newUPSIDE.WebForm2" %>
+   <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ViewExperimentData.aspx.cs" Inherits="newUPSIDE.WebForm2" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head"  runat="server">
+    <%    
+    Response.Buffer = true;
+    //Response.ExpiresAbsolute = now() - 1;
+    Response.Expires = 0;
+    Response.CacheControl = "no-cache";
+    Response.Cache.SetNoStore();
+    Response.AppendHeader("Pragma", "no-cache");
+    %>
+
+
+    <!--
+    Response.Expires = 0;
+    Response.Cache.SetNoStore();
+    Response.AppendHeader("Pragma", "no-cache");
+    -->
+
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <!--script type="text/javascript" src="d3.v4.min.js"></script-->
     <style>
         table tbody {
             display: block;
@@ -104,17 +122,17 @@
         </table>
         <div id="box">
         </div>
-
-       <%-- <div id="A">                              
+ 
+        <div id="A">                              
             <H2>&nbsp;Bar chart of time used in each round</H2>
             <svg width ="500" height ="500" id ="svg4"></svg>
             <script>
-                <%--function Init() {
-                    var v = "中国";
+                function Init() {
+                    var v = "�й�";
                     var s = '<%=CsharpVoid("'+v+'") %>';
                     alert(s);
-                }--%>
-             <%--   var svg4 = d3.select("#svg4");
+                }
+                var svg4 = d3.select("#svg4");
                 var margin = 200;
                 var width = svg4.attr("width") - margin;
                 var height = svg4.attr("height") - margin;
@@ -133,24 +151,30 @@
                 var g = svg4.append("g")
                     .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
-                var filepath = "File/";
-                var filename = filepath + "testbar.json";
+                //var filepath = "File/";
+                //var filename = filepath + "testbar.json";
+                var filename = "testbar.json";
                 //read json file for data
                 d3.json(filename, function (error, data2) {                         //Use "/" to combine directory name and file name
                 //d3.json("testbar.json", function (error, data2) {                 //read testbar.json in root directory
 
                     if (error) {
-                        throw error;
+                        console.error(error);
+                    } else {
+                        console.log(data2);
                     }
+                    //if (error) {
+                    //    throw error;
+                    //}
 
                     data2.forEach(function (d) {
-                        d.round = d.round;
-                        d.timeuse = +d.timeuse;
-                        console.log(d.round, d.timeuse);     
+                        d.Round = d.Round;
+                        d.TimeUse = +d.TimeUse;
+                        console.log("A:", d.Round, d.TimeUse);     
                     });
 
-                    x1.domain(data2.map(function (d) { return d.round; }));                     //
-                    y1.domain([0, d3.max(data2, function (d) { return d.timeuse; })]);          //
+                    x1.domain(data2.map(function (d) { return d.Round; }));                     //
+                    y1.domain([0, d3.max(data2, function (d) { return d.TimeUse; })]);          //
 
 
                     g.append("g")
@@ -172,7 +196,7 @@
                         .attr("text-anchor", "end")
                         .attr("font-size", "18px")
                         .attr("stroke", "blue")
-                        .text("TimeUse");
+                        .text("Time");
 
                     g.append("g")
                         .attr("transform", "translate(0, 0)")
@@ -185,12 +209,12 @@
                         .attr("class", "bar")
                         .on("mouseover", onMouseOver)
                         .on("mouseout", onMouseOut)
-                        .attr("x", function (d) { return x1(d.round); })                //
-                        .attr("y", function (d) { return y1(d.timeuse); })              //
+                        .attr("x", function (d) { return x1(d.Round); })                //
+                        .attr("y", function (d) { return y1(d.TimeUse); })              //
                         .attr("width", x1.bandwidth()).transition()                     //
                         .ease(d3.easeLinear).duration(200)
                         .delay(function (d, i) { return i * 25; })
-                        .attr("height", function (d) { return height - y1(d.timeuse); });       //
+                        .attr("height", function (d) { return height - y1(d.TimeUse); });       //
                 });
                 //console.log("x.bandwidth()=", x.bandwidth());
 
@@ -202,13 +226,13 @@
                         .transition()
                         .duration(200)
                         .attr('width', x1.bandwidth() + 5)                              //
-                        .attr("y", function (d) { return y1(d.timeuse) - 10; })         //
-                        .attr("height", function (d) { return height - y1(d.timeuse) + 10; });      //
+                        .attr("y", function (d) { return y1(d.TimeUse) - 10; })         //
+                        .attr("height", function (d) { return height - y1(d.TimeUse) + 10; });      //
 
                     g.append("text")
                         .attr('class', 'val')
                         .attr('x', function () {
-                            return x1(d.round);                                         //
+                            return x1(d.Round);                                         //
                         })
 
                         .attr('y', function () {
@@ -225,35 +249,36 @@
                         .transition()
                         .duration(200)
                         .attr('width', x1.bandwidth())                                  //
-                        .attr("y", function (d) { return y1(d.timeuse); })              //
-                        .attr("height", function (d) { return height - y1(d.timeuse); });           //
+                        .attr("y", function (d) { return y1(d.TimeUse); })              //
+                        .attr("height", function (d) { return height - y1(d.TimeUse); });           //
 
                     d3.selectAll('.val')
                         .remove()
                 }
 
             </script>
-        </div>--%>
+        </div>
 
-       <%-- <div id="Second">
+        <div id="Second">
             <H2>&nbsp;Line chart of time used in each round</H2>
             <br><br><br>
             <svg width="480" height="250" id="svg3"></svg>
                 <script>
-                    // set the dimensions and margins of the graph
-                    var margin3 = { top3: 20, right3: 50, bottom3: 30, left3: 50 },
+                    // set the dimensions and margins of the graph, top 20,right 50, bottom 30, left 50
+                    // change to left = 80 ,
+                    var margin3 = { top3: 50, right3: 50, bottom3: 0, left3: 80 },
                         width3 = 480 - margin3.left3 - margin3.right3,
                         height3 = 250 - margin3.top3 - margin3.bottom3;
 
 
                     // set the ranges
-                    var x = d3.scaleLinear().range([0, width3]);    //OK
-                    var y = d3.scaleLinear().range([height3, 0]);
+                    var x = d3.scaleLinear().range([0, width3]);    // 0~480-80-50=250
+                    var y = d3.scaleLinear().range([height3, 0]);   //250-50-0=200 ~ 0
 
                     // define the line
                     var valueline = d3.line()
-                        .x(function (d) { return x(d.round); })
-                        .y(function (d) { return y(d.timeuse); });
+                        .x(function (d) { return x(d.Round); })
+                        .y(function (d) { return y(d.TimeUse); });
 
 
                     //var svg3 = d3.select("body").append("svg")
@@ -261,7 +286,9 @@
                         .attr("width", width3 + margin3.left3 + margin3.right3)
                         .attr("height", height3 + margin3.top3 + margin3.bottom3)
                         .append("g").attr("transform",
-                            "translate(" + margin3.left3 + "," + margin3.top3 + ")");
+                            "translate(" + margin3.left3 + "," + 20 + ")");
+                        //.append("g").attr("transform",
+                        //    "translate(" + margin3.left3 + "," + margin3.top3 + ")");
 
 
                     // Get the data
@@ -270,14 +297,14 @@
                         if (error) throw error;
                         // format the data
                         data.forEach(function (d) {
-                            d.round = d.round;
-                            d.timeuse = +d.timeuse;
-                            console.log(d.round, d.timeuse);
+                            d.Round = d.Round;
+                            d.TimeUse = +d.TimeUse;
+                            console.log("B:", d.Round, d.TimeUse);
                         });
 
                         // Scale the range of the data
-                        x.domain(d3.extent(data, function (d) { return d.round; }));
-                        y.domain([0, d3.max(data, function (d) { return d.timeuse; })]);
+                        x.domain(d3.extent(data, function (d) { return d.Round; }));
+                        y.domain([0, d3.max(data, function (d) { return d.TimeUse; })]);
 
                         // Add the valueline path.
                         svg3.append("path")
@@ -288,7 +315,7 @@
                         svg3.append("g")
                             //.attr("transform", "translate(0," + height + ")")
                             .attr("transform", "translate(" + 0 + "," + height3 + ")")      //500-20-30=450
-                            .call(d3.axisBottom(x))
+                            .call(d3.axisBottom(x).ticks(5))                                //ticks(5) show 5 scale
                             .append("text")
                             //.attr("y", height3)                                           // height -250  
                             .attr("x", width3 + 50)                                         // width - 100 @ mid
@@ -299,22 +326,24 @@
 
                         // Add the Y Axis
                         svg3.append("g")
+                            .attr("transform", "translate(" + 0 + "," + 0 + ")")            //
                             .call(d3.axisLeft(y))
                             .append("text")
                             .attr("transform", "rotate(-90)")
-                            //  .attr("transform", "translate(" + width + "," + height + ")")      
-                            .attr("y", 20)
-                            // .attr("dy", "-5.1em")
+                            .attr("x",20)
+                            //  .attr("transform", "translate(" + width + "," + height + ")")
+                            .attr("y", -50)                                                 //OK !
+                            //.attr("dy", "-5.1em")
                             .attr("text-anchor", "end")
                             .attr("font-size", "18px")
                             .attr("stroke", "blue")
-                            .text("TimeUse");
+                            .text("Time");
 
                     });
                 </script>
-            </div>--%>
+            </div>
 
-          <%--  <div id="B">   
+            <div id="B">   
             <br><br><br>
             <H2>&nbsp;Percentage of Success</H2>
             <svg width="600" height="600" id="svg2"></svg>
@@ -388,6 +417,8 @@
                             return 'translate(' + x2 + ', ' + y2 + ')';
                         })
                         .attr('text-anchor', 'middle')
+                        .style("font-size", "16px")
+                        .attr("stroke", "blue")
                         .text(function (d) {
                             var percent = Number(d.value) / d3.sum(dataset, function (d) {
                                 return d[1];
@@ -414,9 +445,9 @@
                 });
 //
             </script>
-        </div>--%>
+        </div>
 
-       <%-- <div id="E">  
+        <div id="E">  
             <br>
             <H2>&nbsp;Percentage of Overtime</H2>
             <svg width="600" height="600" id="svg5"></svg>
@@ -490,6 +521,8 @@
                             return 'translate(' + x5 + ', ' + y5 + ')';
                         })
                         .attr('text-anchor', 'middle')
+                        .style("font-size", "16px")
+                        .attr("stroke", "blue")
                         .text(function (d) {
                             var percent = Number(d.value) / d3.sum(dataset, function (d) {
                                 return d[1];
@@ -516,7 +549,7 @@
                 });
 //
             </script>
-        </div>--%>
+        </div>
 
 
 
