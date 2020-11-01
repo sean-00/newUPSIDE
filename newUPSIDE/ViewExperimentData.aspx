@@ -1,24 +1,57 @@
    <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ViewExperimentData.aspx.cs" Inherits="newUPSIDE.WebForm2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head"  runat="server">
+    
     <%    
-    Response.Buffer = true;
-    //Response.ExpiresAbsolute = now() - 1;
-    Response.Expires = 0;
-    Response.CacheControl = "no-cache";
-    Response.Cache.SetNoStore();
-    Response.AppendHeader("Pragma", "no-cache");
+        Response.Buffer = true;
+        //Response.ExpiresAbsolute = now() - 1;
+        Response.ExpiresAbsolute = System.DateTime.Now;
+        Response.Expires = 0;
+        Response.CacheControl = "no-cache";
+        Response.Cache.SetNoStore();
+        Response.AppendHeader("Pragrma", "no-cache");
+        Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
     %>
 
+    <%-- 
+    <script type="text/javascript">
+        document.write("<s" + "cript type='text/javascript' src='demo.js?" + Math.random() + "'></s" + "cript>");
+    </script>
+    --%>
+    <%-- 
+        <script src="/Scripts/pages/common.js?ver<%=DateTime.Now.Ticks.ToString()%>" type="text/javascript"></script>
+    --%>
 
-    <!--
-    Response.Expires = 0;
-    Response.Cache.SetNoStore();
-    Response.AppendHeader("Pragma", "no-cache");
-    -->
-
-    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <%-- // new script to force to refresh --%>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>     
+    
+    <%--//This is the original script --%>
+    <!--script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script-->       
     <!--script type="text/javascript" src="d3.v4.min.js"></script-->
+    
+    <%--<script type="text/javascript">
+            var strSourFile = "testbar.json";
+            var strDestFile = "File/testbar.json";
+            var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+            //// 检查文件是否存在 
+            if (objFSO.FileExists(strSourFile)){
+              //// 移动文件
+                var strPath = objFSO.MoveFile(strSourFile, strDestFile);
+                if (objFSO.FileExists(strDestFile))
+                    document.write("文件已经移动到: " + strDestFile + "<br>");
+                    //// 复制文件
+                    //    var strPath = objFSO.CopyFile(strDestFile, strSourFile);
+                    //    if (objFSO.FileExists(strSourFile))
+                    //    document.write("文件已经复制到: " + strSourFile + "<br>");
+                    //    // 删除文件
+                    //    //objFSO.DeleteFile(strDestFile, true);
+                    //    //document.write("文件: " + strDestFile + "已经删除<br>");
+            }
+            else
+                document.write("文件: " + strSourFile + "不存在<br>"); 
+    </script>--%>
+
+
     <style>
         table tbody {
             display: block;
@@ -132,6 +165,9 @@
                     var s = '<%=CsharpVoid("'+v+'") %>';
                     alert(s);
                 }
+
+
+
                 var svg4 = d3.select("#svg4");
                 var margin = 200;
                 var width = svg4.attr("width") - margin;
@@ -151,6 +187,7 @@
                 var g = svg4.append("g")
                     .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
+                
                 //var filepath = "File/";
                 //var filename = filepath + "testbar.json";
                 var filename = "testbar.json";
@@ -264,8 +301,8 @@
             <br><br><br>
             <svg width="480" height="250" id="svg3"></svg>
                 <script>
-                    // set the dimensions and margins of the graph, top 20,right 50, bottom 30, left 50
-                    // change to left = 80 ,
+                                // set the dimensions and margins of the graph, top 20,right 50, bottom 30, left 50
+                                // change to left = 80 ,
                     var margin3 = { top3: 50, right3: 50, bottom3: 0, left3: 80 },
                         width3 = 480 - margin3.left3 - margin3.right3,
                         height3 = 250 - margin3.top3 - margin3.bottom3;

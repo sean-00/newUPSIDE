@@ -54,7 +54,15 @@ namespace newUPSIDE
                 }
  
             }
-            Refresh();              // clear cache           
+            Refresh();              // clear cache         
+            
+            //2nd  line 59-65
+            IDictionaryEnumerator allCaches = HttpRuntime.Cache.GetEnumerator();
+
+            while (allCaches.MoveNext())
+            {
+                Cache.Remove(allCaches.Key.ToString());
+            }
 
         }
 
@@ -175,6 +183,8 @@ namespace newUPSIDE
 
 
             }
+            Refresh();              // clear cache           
+
         }
 
         protected void ExperimentNameSelected_SelectedIndexChanged(object sender, EventArgs e)
@@ -266,6 +276,8 @@ namespace newUPSIDE
         protected string CsharpVoid(string strCC)
         {
             strCC = "你好！" + strCC;
+            Refresh();              // clear cache           
+
             return strCC;
         }
 
