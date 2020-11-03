@@ -5,30 +5,28 @@
     <%    
         Response.Buffer = true;
         //Response.ExpiresAbsolute = now() - 1;
-        Response.ExpiresAbsolute = System.DateTime.Now;
-        Response.Expires = 0;
+        //Response.ExpiresAbsolute = System.DateTime.Now;    
+        Response.Expires = -1;
         Response.CacheControl = "no-cache";
         Response.Cache.SetNoStore();
         Response.AppendHeader("Pragrma", "no-cache");
         Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
     %>
 
-    <%-- 
-    <script type="text/javascript">
-        document.write("<s" + "cript type='text/javascript' src='demo.js?" + Math.random() + "'></s" + "cript>");
-    </script>
-    --%>
-    <%-- 
+    <%--   this is a method
         <script src="/Scripts/pages/common.js?ver<%=DateTime.Now.Ticks.ToString()%>" type="text/javascript"></script>
     --%>
 
     <%-- // new script to force to refresh --%>
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>     
     
-    <%--//This is the original script --%>
+    <%--
+    //This is the original script 
+    <script-- type="text/javascript" src="https://d3js.org/d3.v4.min.js?ver<%=DateTime.Now.Ticks.ToString()%>"></!--script-->
     <!--script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script-->       
     <!--script type="text/javascript" src="d3.v4.min.js"></script-->
-    
+    --%>
+
     <%--<script type="text/javascript">
             var strSourFile = "testbar.json";
             var strDestFile = "File/testbar.json";
@@ -125,9 +123,19 @@
             text-anchor: end;
         }
     </style>
+    
+    <%--
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>
+     --%>
+    
+    <%-- new method from CSDN --%>
+    <script type="text/javascript">
+        document.write('<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.slim.min.js?ver=' + new Date().getTime() + '"><\/script>');
+    </script>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-    <script src="lib/main.js"></script>
+
+
+    <script src="lib/main.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body"  runat="server">
     <form id="form1" runat="server">
@@ -156,6 +164,7 @@
         <div id="box">
         </div>
  
+        
         <div id="A">                              
             <H2>&nbsp;Bar chart of time used in each round</H2>
             <svg width ="500" height ="500" id ="svg4"></svg>
@@ -190,7 +199,9 @@
                 
                 //var filepath = "File/";
                 //var filename = filepath + "testbar.json";
-                var filename = "testbar.json";
+                var filename = "testbar.json?" + new Date().getTime();              //PROBLEM SOLVED£¡
+
+                //var filename = "testbar.json";
                 //read json file for data
                 d3.json(filename, function (error, data2) {                         //Use "/" to combine directory name and file name
                 //d3.json("testbar.json", function (error, data2) {                 //read testbar.json in root directory
@@ -200,9 +211,6 @@
                     } else {
                         console.log(data2);
                     }
-                    //if (error) {
-                    //    throw error;
-                    //}
 
                     data2.forEach(function (d) {
                         d.Round = d.Round;
@@ -253,7 +261,6 @@
                         .delay(function (d, i) { return i * 25; })
                         .attr("height", function (d) { return height - y1(d.TimeUse); });       //
                 });
-                //console.log("x.bandwidth()=", x.bandwidth());
 
                 function onMouseOver(d, i) {
                     d3.select(this)
@@ -301,12 +308,11 @@
             <br><br><br>
             <svg width="480" height="250" id="svg3"></svg>
                 <script>
-                                // set the dimensions and margins of the graph, top 20,right 50, bottom 30, left 50
-                                // change to left = 80 ,
+                    // set the dimensions and margins of the graph, top 20,right 50, bottom 30, left 50
+                    // change to left = 80 ,
                     var margin3 = { top3: 50, right3: 50, bottom3: 0, left3: 80 },
                         width3 = 480 - margin3.left3 - margin3.right3,
                         height3 = 250 - margin3.top3 - margin3.bottom3;
-
 
                     // set the ranges
                     var x = d3.scaleLinear().range([0, width3]);    // 0~480-80-50=250
@@ -316,7 +322,6 @@
                     var valueline = d3.line()
                         .x(function (d) { return x(d.Round); })
                         .y(function (d) { return y(d.TimeUse); });
-
 
                     //var svg3 = d3.select("body").append("svg")
                     var svg3 = d3.select("#svg3").append("svg")
@@ -587,9 +592,5 @@
 //
             </script>
         </div>
-
-
-
-
     </form>
 </asp:Content>
