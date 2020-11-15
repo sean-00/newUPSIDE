@@ -10,13 +10,6 @@
     Response.AppendHeader("Pragma", "no-cache");
     %>
 
-
-    <!--
-    Response.Expires = 0;
-    Response.Cache.SetNoStore();
-    Response.AppendHeader("Pragma", "no-cache");
-    -->
-
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <!--script type="text/javascript" src="d3.v4.min.js"></script-->
     <style>
@@ -98,40 +91,28 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body"  runat="server">
     <form id="form1" runat="server">
-         <asp:Label ID="Label2" runat="server" Text="Select Experiment" BackColor="#66CCFF" Font-Bold="True" ForeColor="Black" Height="40px" Width="100%"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="Select Experiment" BackColor="#66CCFF" Font-Bold="True" ForeColor="Black" Height="40px" Width="100%"></asp:Label>
         <asp:DropDownList ID="ExperimentNameSelected" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ExperimentNameSelected_SelectedIndexChanged" Width="50%">
-            
-            
-        </asp:DropDownList>
-        
+        </asp:DropDownList>        
         <a  href="UPSIDE-Experiment://UnityExperiment.exe">Open Experiment</a>        
         <asp:Label ID="Label3" runat="server" Text="Experiment Description" BackColor="#66CCFF" Font-Bold="True" ForeColor="Black" Height="40px" Width="100%"></asp:Label>
        <asp:Label ID="Label4" runat="server" Text="Please choose the experiments"  Width="100%"></asp:Label>
         <asp:Label ID="Label1" runat="server" Text="Experiment Data" BackColor="#66CCFF" Font-Bold="True" ForeColor="Black" Height="40px" Width="100%"></asp:Label>
         <asp:Label ID="LabelTest" runat="server" Text=""></asp:Label>
         <asp:Table class="table table-bordered table-striped" id="ExperimentDataTable" runat="server">
-            <asp:TableHeaderRow ID ="tableHeaderName" >
-                
+            <asp:TableHeaderRow ID ="tableHeaderName" >                
             </asp:TableHeaderRow>
             <asp:TableRow ID="tablerow">
-
             </asp:TableRow>
         </asp:Table>
-        <table class="table table-bordered table-striped" >
-           
+        <table class="table table-bordered table-striped" >           
         </table>
         <div id="box">
         </div>
- 
         <div id="A">                              
             <H2>&nbsp;Bar chart of time used in each round</H2>
             <svg width ="500" height ="500" id ="svg4"></svg>
-            <script>
-                function Init() {
-                    var v = "ÖÐ¹ú";
-                    var s = '<%=CsharpVoid("'+v+'") %>';
-                    alert(s);
-                }
+            <script>               
                 var svg4 = d3.select("#svg4");
                 var margin = 200;
                 var width = svg4.attr("width") - margin;
@@ -550,9 +531,5 @@
 //
             </script>
         </div>
-
-
-
-
     </form>
 </asp:Content>

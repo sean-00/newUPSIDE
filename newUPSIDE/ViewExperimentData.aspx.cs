@@ -231,12 +231,15 @@ namespace newUPSIDE
             JObject jsonSelected = new JObject();
             jsonSelected = JObject.Parse(josnSelectedPath);
             ArrayList inputArray = new ArrayList();
-            inputArray.Add(jsonSelected["Experiments"]);          
+            int d3json = jsonSelected["Experiments"].Count();
+            for (int i = 1; i < d3json; i++) {
+                inputArray.Add(jsonSelected["Experiments"][i]);
+            }
+                      
             string fileTestBar = Server.MapPath("~/testbar.json");
-            File.WriteAllText(fileTestBar, JsonConvert.SerializeObject(jsonSelected["Experiments"]));
+            File.WriteAllText(fileTestBar, JsonConvert.SerializeObject(inputArray));
 
             //  FileStream fsSource = new FileStream(fileUrl, FileMode.Open);
-
             // FileStream fsTarget = new FileStream(fileTestBar, FileMode.OpenOrCreate);
             // byte[] sourceArr = new byte[fsSource.Length];
             //  fsSource.Read(sourceArr, 0, sourceArr.Length);

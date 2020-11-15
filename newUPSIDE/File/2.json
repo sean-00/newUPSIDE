@@ -87,46 +87,7 @@
       "TimeUse": 490,
       "ImageType": "Local",
       "ImageDetail": "S_from_O"
-    },
-    {
-      "Round": 1,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 648,
-      "ImageType": "Global",
-      "ImageDetail": "O_from_Z"
-    },
-    {
-      "Round": 2,
-      "Success": false,
-      "OverTime": false,
-      "TimeUse": 319,
-      "ImageType": "Neither",
-      "ImageDetail": "Z_from_T"
-    },
-    {
-      "Round": 3,
-      "Success": false,
-      "OverTime": false,
-      "TimeUse": 787,
-      "ImageType": "Local",
-      "ImageDetail": "S_from_H"
-    },
-    {
-      "Round": 4,
-      "Success": false,
-      "OverTime": false,
-      "TimeUse": 591,
-      "ImageType": "Global",
-      "ImageDetail": "H_from_S"
-    },
-    {
-      "Round": 5,
-      "Success": true,
-      "OverTime": false,
-      "TimeUse": 886,
-      "ImageType": "Local",
-      "ImageDetail": "T_from_O"
     }
+   
   ]
 }
