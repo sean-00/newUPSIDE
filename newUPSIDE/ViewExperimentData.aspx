@@ -4,8 +4,6 @@
     
     <%    
         Response.Buffer = true;
-        //Response.ExpiresAbsolute = now() - 1;
-        //Response.ExpiresAbsolute = System.DateTime.Now;    
         Response.Expires = -1;
         Response.CacheControl = "no-cache";
         Response.Cache.SetNoStore();
@@ -13,41 +11,8 @@
         Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
     %>
 
-    <%--   this is a method
-        <script src="/Scripts/pages/common.js?ver<%=DateTime.Now.Ticks.ToString()%>" type="text/javascript"></script>
-    --%>
-
     <%-- // new script to force to refresh --%>
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>     
-    
-    <%--
-    //This is the original script 
-    <script-- type="text/javascript" src="https://d3js.org/d3.v4.min.js?ver<%=DateTime.Now.Ticks.ToString()%>"></!--script-->
-    <!--script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script-->       
-    <!--script type="text/javascript" src="d3.v4.min.js"></script-->
-    --%>
-
-    <%--<script type="text/javascript">
-            var strSourFile = "testbar.json";
-            var strDestFile = "File/testbar.json";
-            var objFSO = new ActiveXObject("Scripting.FileSystemObject");
-            //// 检查文件是否存在 
-            if (objFSO.FileExists(strSourFile)){
-              //// 移动文件
-                var strPath = objFSO.MoveFile(strSourFile, strDestFile);
-                if (objFSO.FileExists(strDestFile))
-                    document.write("文件已经移动到: " + strDestFile + "<br>");
-                    //// 复制文件
-                    //    var strPath = objFSO.CopyFile(strDestFile, strSourFile);
-                    //    if (objFSO.FileExists(strSourFile))
-                    //    document.write("文件已经复制到: " + strSourFile + "<br>");
-                    //    // 删除文件
-                    //    //objFSO.DeleteFile(strDestFile, true);
-                    //    //document.write("文件: " + strDestFile + "已经删除<br>");
-            }
-            else
-                document.write("文件: " + strSourFile + "不存在<br>"); 
-    </script>--%>
 
 
     <style>
@@ -73,9 +38,9 @@
             width: calc( 100% - 1em )
         }
 
-            table thead th {
-                background: #ccc;
-            }
+        table thead th {
+            background: #ccc;
+        }
     </style>
 
     <style>
