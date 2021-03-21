@@ -160,16 +160,11 @@
 
                 var g = svg4.append("g")
                     .attr("transform", "translate(" + 100 + "," + 100 + ")");
+             
+                var filename = "testbar.json?" + new Date().getTime();             
 
-                
-                //var filepath = "File/";
-                //var filename = filepath + "testbar.json";
-                var filename = "testbar.json?" + new Date().getTime();              //PROBLEM SOLVED£¡
-
-                //var filename = "testbar.json";
                 //read json file for data
-                d3.json(filename, function (error, data2) {                         //Use "/" to combine directory name and file name
-                //d3.json("testbar.json", function (error, data2) {                 //read testbar.json in root directory
+                d3.json(filename, function (error, data2) {                         
 
                     if (error) {
                         console.error(error);
@@ -177,11 +172,7 @@
                         console.log(data2);
                     }
 
-                    data2.forEach(function (d) {
-                        d.Round = d.Round;
-                        d.TimeUse = +d.TimeUse;
-                        console.log("A:", d.Round, d.TimeUse);     
-                    });
+
 
                     x1.domain(data2.map(function (d) { return d.Round; }));                     //
                     y1.domain([0, d3.max(data2, function (d) { return d.TimeUse; })]);          //

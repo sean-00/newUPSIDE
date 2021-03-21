@@ -72,7 +72,7 @@
   <ItemGroup>
     <Content Include="d3.v4.min.js" />
     <Content Include="ExperimentAttributeConfiger.aspx" />
-    <Content Include="Image\back.jpg" />
+    <Content Include="Image\background.jpg" />
     <Content Include="Image\unisa-logo.jpg" />
     <Content Include="RoundBar.aspx" />
     <Content Include="RoundBar.html" />

@@ -1,6 +1,37 @@
 {
   "Experiments": [
     {
+      "Round": 1,
+      "Success": false,
+      "OverTime": false,
+      "TimeUse": 176
+    },
+
+    {
+      "Round": 2,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 285
+    },
+    {
+      "Round": 3,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 193
+    },
+    {
+      "Round": 4,
+      "Success": true,
+      "OverTime": true,
+      "TimeUse": 350
+    },
+    {
+      "Round": 5,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 128
+    },
+    {
       "Round": 6,
       "Success": false,
       "OverTime": false,
