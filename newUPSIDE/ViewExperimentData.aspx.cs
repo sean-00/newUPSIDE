@@ -25,23 +25,32 @@ namespace newUPSIDE
    
     public partial class WebForm2 : System.Web.UI.Page
     {        
-        int lengthRow;// the length of row
-        int lengthCol;// the length of column
+        int lengthRow;
+        int lengthCol;
         ArrayList RowHead = new ArrayList();
+        //ArrayList ExperimentsName = new ArrayList();
         JObject jo = new JObject();
+       // ExperimentAttributeConfiger EAC = new ExperimentAttributeConfiger();
         protected void Page_Load(object sender, EventArgs e)
         {
-        //refresh the page    
+            //  Initialize(Server.MapPath("~/Unityjson.json"));
+            //  InitializeList();
+            //string path = Server.MapPath("~/File/ConfigerExperiment.json");
+            // string txt = (string)Session["MySessionKey "];
+            // ExperimentNameSelected.Items.Add(txt);
+            
             if (!Page.IsPostBack)
             {
-                //store the json to the related path
+               // Initialize(path);
                 string JsonPath = Server.MapPath("~/File/ConfigerExperiment.json");
+              //  string JsonPath = "C:\\Users\\lx\\source\\repos\\newUPSIDE\\newUPSIDE\\File\\ConfigerExperiment.json";
                 string JsonString = File.ReadAllText(JsonPath, Encoding.UTF8);
                 JObject jobject = JObject.Parse(JsonString);
-                //get the selected json file
                 for (int i = 0; i < jobject["Experiments"].Count(); i++)
                 {
-                    ExperimentNameSelected.Items.Add(jobject["Experiments"][i]["Name"].ToString());                        
+                    ExperimentNameSelected.Items.Add(jobject["Experiments"][i]["Name"].ToString());
+                        //Insert(i, jobject["Experiments"][i]["Name"].ToString());
+                        //   ExperimentNameSelected.Items[i].Value = i.ToString();
                 }
  
             }
@@ -49,12 +58,16 @@ namespace newUPSIDE
 
         }
 
+        // line 61-99 for clear cache
         public static void Refresh()
         {
             Refresh(String.Empty);
         }
 
-       //refresh the page and clear the cache
+        /// <summary>
+            /// 移除指bai定前缀缓du存
+            /// </summary>
+            /// <param name="pre"></param>
         public static void Refresh(string pre)
         {
             System.Web.Caching.Cache _cache = HttpRuntime.Cache;
@@ -85,9 +98,11 @@ namespace newUPSIDE
 
         }
 
-        //
         private void Initialize(string path)
         {
+
+            //string fileUrl = path;
+            //ToDataTable(fileUrl);
             string josnString = File.ReadAllText(path, Encoding.Default);
             
             jo = JObject.Parse(josnString);
@@ -110,16 +125,19 @@ namespace newUPSIDE
             int m = ll.Count();
             for (int i = 0; i < m; i++)
             {
-               
+                //string w = ll.GetEnumerator();
 
             }
-            
+            //string m = ltest.Children[0].name;
             lengthRow = jo[name].Count();
             lengthCol = jo[name][0].Count();
             int row = lengthRow;    // 行数
             int col = lengthCol;    // 列数
 
-          
+            //RowHead.Add("Round");
+            //RowHead.Add("Success");
+            //RowHead.Add("OverTime");
+            //RowHead.Add("TimeUse");
 
             for (int i = 0; i < col; i++)
             {
@@ -141,7 +159,21 @@ namespace newUPSIDE
                     cell.Text = cellValue;
                     tr.Cells.AddAt(j, cell);
                 }
-              
+               // TableCell td1 = new TableCell();
+               // TableCell td2 = new TableCell();
+                //TableCell td3 = new TableCell();
+               // TableCell td4 = new TableCell();
+               // int k = 0;
+               // td1.Text = jo[name][i][RowHead[0]].ToString();
+               // tr.Cells.AddAt(k, td1);
+               // tr.Cells.AddAt(k + 1, td2);
+               // td2.Text = jo[name][i][RowHead[1]].ToString();
+               // tr.Cells.AddAt(k + 2, td3);
+               // td3.Text = jo[name][i][RowHead[2]].ToString();
+               // tr.Cells.AddAt(k + 3, td4);
+               // td4.Text = jo[name][i][RowHead[3]].ToString();
+
+
             }
         }
 

@@ -110,10 +110,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\test1.mdf" />
-    <Content Include="App_Data\test1_log.ldf">
-      <DependentUpon>test1.mdf</DependentUpon>
-    </Content>
     <Content Include="ExperimentAttributeConfiger.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -208,6 +204,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <PropertyGroup>
