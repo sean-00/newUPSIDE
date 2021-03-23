@@ -17,7 +17,7 @@ namespace newUPSIDE
 
         
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {   //follow the input number add the text box
             if (ViewState["Insus.NET"] != null)
             {
                 DymanicallyCreateTextBox();
@@ -30,27 +30,7 @@ namespace newUPSIDE
         private void DymanicallyCreateTextBox()
         {
             ViewState["Insus.NET"] = true;
-            //if (ConfigerHeaderNumber.Text != "")
-            //{
-            //    ConfigerHeaderButton.Enabled = false;
-            //    int count = int.Parse(ConfigerHeaderNumber.Text);
-            //    for (int i = 0; i < count; i++)
-            //    {
-
-            //        TextBox textbox = new TextBox();
-            //        textbox.Width = 120;
-            //        textbox.BorderWidth = 1;
-                   
-                    
-            //        textbox.ID = "T" + i.ToString();
-            //        PlaceHolderLoadTextBox.Controls.Add(textbox);
-            //        //TableCell cell = new TableCell();
-            //        // text.Width = 100;                    
-            //        //ConfigerHeaderName.Cells.AddAt(i, cell);                   
-            //        // cell.Controls.Add(text);
-            //    }
-
-            //}
+           
         }
 
 
@@ -59,20 +39,14 @@ namespace newUPSIDE
             DymanicallyCreateTextBox();
         }
 
-        protected void Submit_Click(object sender, EventArgs e)
-        {
-           // JObject source = new JObject();
-            //source.Add("{ \"Experiments\":[]}");
-            //create a new file path
-           
-
+        
+        protected void Submit_Click(object sender, EventArgs e)//add json file to server
+        {         
             ArrayList ExperimentData = new ArrayList(); 
-          // if (ConfigerHeaderNumber.Text != ""&&ConfigerName.Text!=""&&ConfigerDescription.Text!="") {
             if (ConfigerName.Text != "" && ConfigerDescription.Text != ""){
                     string newFilepath = "~/File/" + ConfigerName.Text.ToString() + ".json";
                 string p = Server.MapPath(newFilepath);
 
-                //found the file exist 
                 if (!File.Exists(p))
                 {
                     FileStream fs1 = new FileStream(p, FileMode.Create, FileAccess.ReadWrite);
@@ -89,33 +63,20 @@ namespace newUPSIDE
                 JObject newtest = new JObject(
                     new JProperty("Experiments", new JArray(array)));
 
-                
-
-                
-
                 //write the json to file 
                 File.WriteAllText(p, Convert.ToString(newtest));
                 if (ViewState["Insus.NET"] != null)
                 {
-                    //foreach (Control txtobj in this.PlaceHolderLoadTextBox.Controls)
-                    //{
-                    //    if (txtobj is TextBox)
-                    //    {
-                    //        string mmk = (txtobj as TextBox).Text;
-                    //        ExperimentData.Add(mmk);
-
-                    //    }
-                    //}
+                   
                 }
-
-
-               
+                //store the josn file in related place"~/File/ConfigerExperiment.json"
                 string JsonPath = Server.MapPath("~/File/ConfigerExperiment.json");
                 string JsonString = File.ReadAllText(JsonPath, Encoding.UTF8);
                 JObject jobject = JObject.Parse(JsonString);
                 string name = ConfigerName.Text.ToString();
                 Boolean judge = true;
                 
+                //get the input number and store them into json file
                 int count = jobject["Experiments"].Count();
                 for (int i = 0; i < count; i++) {
                     string Ename = jobject["Experiments"][i]["Name"].ToString();
@@ -128,13 +89,10 @@ namespace newUPSIDE
                         judge = true;
                     }
                 }
-               
-                   
-                    
+          
                     if (judge == false)
                     {
                     Response.Write("<p >The Experiment Name Alread Exists!</p>");
-                    //Response.Write("<script language='javascript'>alert('Please Input Name, Description and Header');</script>");
                     }
                     else {
           
@@ -163,27 +121,10 @@ namespace newUPSIDE
             else
             {
                 Response.Write("<p >Please Input Name, Description and Header!</p>");
-               // Response.Write("<script language='javascript'>alert('Please Input Name, Description and Header');</script>");
             }
 
          
         }
-
-        //protected void FileUploadButton_Click(object sender, EventArgs e)
-        //{
-        //    if (MyFileUpload.HasFile)
-        //    {
-
-        //        string filePath = Server.MapPath("~/File/");
-        //        string fileName = MyFileUpload.PostedFile.FileName;
-        //        MyFileUpload.SaveAs(filePath + fileName);
-        //        Response.Write("<p >Uplode Success!</p>");
-        //    }
-        //    else
-        //    {
-        //        Response.Write("<p >Choose File!</p>");
-        //    }
-        //}
 
         
     }
