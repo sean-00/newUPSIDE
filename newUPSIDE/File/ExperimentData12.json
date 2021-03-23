@@ -1,0 +1,124 @@
+{
+  "Experiments": [
+    {
+      "Round": 1,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Local",
+      "ImageDetail": "Z_from_H"
+    },
+    {
+      "Round": 2,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Global",
+      "ImageDetail": "O_from_S"
+    },
+    {
+      "Round": 3,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Neither",
+      "ImageDetail": "S_from_Z"
+    },
+    {
+      "Round": 4,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Global",
+      "ImageDetail": "H_from_T"
+    },
+    {
+      "Round": 5,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Neither",
+      "ImageDetail": "T_from_Z"
+    },
+    {
+      "Round": 1,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Local",
+      "ImageDetail": "S_from_O"
+    },
+    {
+      "Round": 2,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Neither",
+      "ImageDetail": "T_from_Z"
+    },
+    {
+      "Round": 3,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Global",
+      "ImageDetail": "H_from_S"
+    },
+    {
+      "Round": 4,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Neither",
+      "ImageDetail": "T_from_S"
+    },
+    {
+      "Round": 5,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Global",
+      "ImageDetail": "H_from_Z"
+    },
+    {
+      "Round": 1,
+      "Success": false,
+      "OverTime": true,
+      "TimeUse": -1,
+      "ImageType": "Global",
+      "ImageDetail": "H_from_Z"
+    },
+    {
+      "Round": 2,
+      "Success": false,
+      "OverTime": false,
+      "TimeUse": 763,
+      "ImageType": "Neither",
+      "ImageDetail": "Z_from_S"
+    },
+    {
+      "Round": 3,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 1808,
+      "ImageType": "Global",
+      "ImageDetail": "O_from_T"
+    },
+    {
+      "Round": 4,
+      "Success": true,
+      "OverTime": false,
+      "TimeUse": 772,
+      "ImageType": "Neither",
+      "ImageDetail": "S_from_T"
+    },
+    {
+      "Round": 5,
+      "Success": false,
+      "OverTime": false,
+      "TimeUse": 612,
+      "ImageType": "Local",
+      "ImageDetail": "Z_from_O"
+    }
+  ]
+}
