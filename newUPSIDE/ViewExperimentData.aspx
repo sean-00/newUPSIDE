@@ -159,11 +159,7 @@
             <H2>&nbsp;Bar chart of time used in each round</H2>
             <svg width ="500" height ="500" id ="svg4"></svg>
             <script>
-                function Init() {
-                    var v = "ÖÐ¹ú";
-                    var s = '<%=CsharpVoid("'+v+'") %>';
-                    alert(s);
-                }
+               
                 var svg4 = d3.select("#svg4");
                 var margin = 200;
                 var width = svg4.attr("width") - margin;
