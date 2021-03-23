@@ -1,17 +1,52 @@
    <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ViewExperimentData.aspx.cs" Inherits="newUPSIDE.WebForm2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head"  runat="server">
+    
     <%    
-    Response.Buffer = true;
-    //Response.ExpiresAbsolute = now() - 1;
+        Response.Buffer = true;
+        //Response.ExpiresAbsolute = now() - 1;
+        //Response.ExpiresAbsolute = System.DateTime.Now;    
+        Response.Expires = -1;
+        Response.CacheControl = "no-cache";
+        Response.Cache.SetNoStore();
+        Response.AppendHeader("Pragrma", "no-cache");
+        Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
+    %>
+
+
+    <!--
     Response.Expires = 0;
-    Response.CacheControl = "no-cache";
     Response.Cache.SetNoStore();
     Response.AppendHeader("Pragma", "no-cache");
-    %>
+    -->
 
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <!--script type="text/javascript" src="d3.v4.min.js"></script-->
+    --%>
+
+    <%--<script type="text/javascript">
+            var strSourFile = "testbar.json";
+            var strDestFile = "File/testbar.json";
+            var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+            //// 检查文件是否存在 
+            if (objFSO.FileExists(strSourFile)){
+              //// 移动文件
+                var strPath = objFSO.MoveFile(strSourFile, strDestFile);
+                if (objFSO.FileExists(strDestFile))
+                    document.write("文件已经移动到: " + strDestFile + "<br>");
+                    //// 复制文件
+                    //    var strPath = objFSO.CopyFile(strDestFile, strSourFile);
+                    //    if (objFSO.FileExists(strSourFile))
+                    //    document.write("文件已经复制到: " + strSourFile + "<br>");
+                    //    // 删除文件
+                    //    //objFSO.DeleteFile(strDestFile, true);
+                    //    //document.write("文件: " + strDestFile + "已经删除<br>");
+            }
+            else
+                document.write("文件: " + strSourFile + "不存在<br>"); 
+    </script>--%>
+
+
     <style>
         table tbody {
             display: block;
@@ -85,9 +120,19 @@
             text-anchor: end;
         }
     </style>
+    
+    <%--
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>
+     --%>
+    
+    <%-- new method from CSDN --%>
+    <script type="text/javascript">
+        document.write('<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.slim.min.js?ver=' + new Date().getTime() + '"><\/script>');
+    </script>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-    <script src="lib/main.js"></script>
+
+
+    <script src="lib/main.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body"  runat="server">
     <form id="form1" runat="server">
@@ -109,10 +154,16 @@
         </table>
         <div id="box">
         </div>
+ 
         <div id="A">                              
             <H2>&nbsp;Bar chart of time used in each round</H2>
             <svg width ="500" height ="500" id ="svg4"></svg>
-            <script>               
+            <script>
+                function Init() {
+                    var v = "中国";
+                    var s = '<%=CsharpVoid("'+v+'") %>';
+                    alert(s);
+                }
                 var svg4 = d3.select("#svg4");
                 var margin = 200;
                 var width = svg4.attr("width") - margin;
@@ -132,9 +183,12 @@
                 var g = svg4.append("g")
                     .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
+                
                 //var filepath = "File/";
                 //var filename = filepath + "testbar.json";
-                var filename = "testbar.json";
+                var filename = "testbar.json?" + new Date().getTime();              //PROBLEM SOLVED！
+
+                //var filename = "testbar.json";
                 //read json file for data
                 d3.json(filename, function (error, data2) {                         //Use "/" to combine directory name and file name
                 //d3.json("testbar.json", function (error, data2) {                 //read testbar.json in root directory
@@ -144,9 +198,6 @@
                     } else {
                         console.log(data2);
                     }
-                    //if (error) {
-                    //    throw error;
-                    //}
 
                     data2.forEach(function (d) {
                         d.Round = d.Round;
@@ -197,7 +248,6 @@
                         .delay(function (d, i) { return i * 25; })
                         .attr("height", function (d) { return height - y1(d.TimeUse); });       //
                 });
-                //console.log("x.bandwidth()=", x.bandwidth());
 
                 function onMouseOver(d, i) {
                     d3.select(this)
@@ -251,7 +301,6 @@
                         width3 = 480 - margin3.left3 - margin3.right3,
                         height3 = 250 - margin3.top3 - margin3.bottom3;
 
-
                     // set the ranges
                     var x = d3.scaleLinear().range([0, width3]);    // 0~480-80-50=250
                     var y = d3.scaleLinear().range([height3, 0]);   //250-50-0=200 ~ 0
@@ -260,7 +309,6 @@
                     var valueline = d3.line()
                         .x(function (d) { return x(d.Round); })
                         .y(function (d) { return y(d.TimeUse); });
-
 
                     //var svg3 = d3.select("body").append("svg")
                     var svg3 = d3.select("#svg3").append("svg")
